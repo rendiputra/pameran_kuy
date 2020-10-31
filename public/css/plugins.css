@@ -1,0 +1,21 @@
+/*********************************************************************************
+
+	Template Name: Blazen - Event and Exhibition Bootstrap4 Template 
+	Template URI: https: //themeforest.net/user/
+	Description: A perfect multi-concept template for event or event management websites. It comes with nice and clean design. 
+	Author: Author Name 
+	Author URI: Author URI 
+	Version: 1.0
+
+	Note: This is plugins css. All plugins css files import here.
+
+**********************************************************************************/
+
+@import url(plugins/fakeloader.css);
+@import url(plugins/font-awesome.min.css);
+@import url(plugins/slick.min.css);
+@import url(plugins/meanmenu.css);
+@import url(plugins/lightgallery.min.css);
+@import url(plugins/nice-select.css);
+@import url(plugins/pe-icon-7-stroke.css);
+@import url(plugins/odometer-theme-default.css);

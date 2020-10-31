@@ -1,0 +1,80 @@
+/* Color Variations */
+
+.event-countdown .event-countdown-day {
+    background: #fe8100;
+}
+
+.event-countdown .event-countdown-hour {
+    background: #6ecf3f;
+}
+
+.event-countdown .event-countdown-minute {
+    background: #1171d1;
+}
+
+.event-countdown .event-countdown-second {
+    background: #b00e09;
+}
+
+.cr-btn.cr-btn-blue,
+a.cr-btn.cr-btn-blue,
+button.cr-btn.cr-btn-blue {
+    background: #1171d1;
+    border-color: #1171d1;
+}
+
+.cr-btn.cr-btn-yellow,
+a.cr-btn.cr-btn-yellow,
+button.cr-btn.cr-btn-yellow {
+    background: #fe8100;
+    border-color: #fe8100;
+}
+
+.banner-slider-active .cr-navigation {
+    background: rgba(176, 14, 9, 0.2);
+}
+
+.banner-slider-active .cr-navigation,
+.bn-navigation ul li ul,
+.widgets.footer-widgets .widget-newsletter input[type="email"]:focus,
+.widgets.footer-widgets .widget-newsletter input[type="submit"]:hover,
+.widgets.footer-widgets .widget-newsletter button:hover,
+#scrollUp {
+    border-color: #b00e09;
+}
+
+.banner-slider-active .cr-navigation:hover,
+.header-style-2 .header-inner .logo::after,
+.section-title.section-title-2 p::after,
+.widgets.footer-widgets .widget-newsletter input[type="submit"]:hover,
+.widgets.footer-widgets .widget-newsletter button:hover,
+#scrollUp {
+    background: #b00e09;
+}
+
+.banner-slider-active .cr-navigation,
+.bn-navigation ul li:hover>a,
+.event-single-2 .event-content h4 a:hover,
+.widgets.footer-widgets .widget-events ul li h6 a:hover,
+.widgets.footer-widgets .widget-contact ul li a:hover,
+.footer-copyright a {
+    color: #b00e09;
+}
+
+.events-triggers-2 ul.nav li a.active {
+    color: #fe8100;
+    border-color: #fe8100;
+}
+
+.events2-wrap-inner .cr-navigation:hover {
+    border-color: #fe8100;
+    background: #fe8100;
+}
+
+.blog-item .blog-item-meta span i,
+.blog-item .blog-item-meta span a:hover,
+.blog-item .blog-item-meta span a:hover i,
+.blog-item .blog-item-title a:hover,
+.team-member h6 {
+    color: #fe8100;
+}
