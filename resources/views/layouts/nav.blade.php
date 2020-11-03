@@ -35,8 +35,10 @@
         }
         .spacer{
             width: 100%;
-        	height: 900px;
+        	height: 30px;
         }
+        
+        @yield('css');
     </style>
 </head>
 

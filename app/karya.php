@@ -8,5 +8,6 @@ class karya extends Model
 {
     //
     protected $table = "karya";
-	protected $primaryKey = "id_karya";
+    protected $primaryKey = "id_karya";
+    protected $fillable = ['id_user','nama_karya' ,'tahun_karya', 'media', 'dimensi', 'deskripsi', 'gambar'];
 }

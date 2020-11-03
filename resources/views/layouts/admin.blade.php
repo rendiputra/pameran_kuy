@@ -17,6 +17,7 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700,900" rel="stylesheet">
     <!-- Google font (font-family: 'Raleway', sans-serif;) -->
     <link href="https://fonts.googleapis.com/css?family=Raleway:400,700,800" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 
     <!-- Stylesheets -->
 	<!-- {{ asset('')}} -->
@@ -37,6 +38,7 @@
             width: 100%;
         	height: 140px;
         }
+        @yield('css');
     </style>
 </head>
 
@@ -99,7 +101,7 @@
 			<div class="footer-copyright-area " style="background-color: #18212e">
 				<div class="container">
 					<div class="footer-copyright text-center">
-						<p>Copyright © <a href="#">Blazen</a>. All Rights Reserved</p>
+						<p>Copyright ©2020 | Challenge Dicoding</p>
 					</div>
 				</div>
 			</div>

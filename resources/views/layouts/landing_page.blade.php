@@ -815,7 +815,7 @@
 			<div class="footer-copyright-area bg-dark">
 				<div class="container">
 					<div class="footer-copyright text-center">
-						<p>Copyright © <a href="#">Blazen</a>. All Rights Reserved</p>
+						<p>Copyright ©2020 | Challenge Dicoding</p>
 					</div>
 				</div>
 			</div>

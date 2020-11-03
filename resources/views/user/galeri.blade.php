@@ -1,4 +1,14 @@
-@extends('layouts.nav')
+@extends('layouts.admin')
+@section('title','Galeri')
+@section('css')
+	.bg-warna{
+		background-color: #00031f;
+	}
+	.spacee{
+		width: 100%;
+		height: 25px;
+	}
+@endsection
 @section('content')
  <!-- Typical Author Area -->
  <section class="cr-section authors-area bg-image-2 section-padding-md" data-black-overlay="8">
@@ -6,355 +16,35 @@
 					<div class="row justify-content-center">
 						<div class="col-lg-8 col-md-10 col-12">
 							<div class="section-title section-title-white text-center">
-								<h2>GALERI</h2>
+								<br><h2>GALERI</h2>
+								<center><hr style="width: 50px; border: 3px solid #fff; border-radius: 5px;" class="text-center"></center>
 							</div>
 						</div>
 					</div>
-					<div class="row no-gutters">
+					
+					<div class="row no-gutters justify-content-center">
 
 
+@foreach ($data as $d)
+						<div class="card mr-2 mt-2 ml-2 mb-2 col-xl-3 col-lg-4 col-md-4 col-sm-12 col-12" style="width: 18rem; max-height: 30rem;">
+							<a href="/galeri/detail/{{$d->id_karya}}">
+								<img class="card-img-top" src="{{ asset('foto_karya')}}/{{ $d->gambar}}" alt="Card image cap" style="max-height: 18rem; ">
+									<div class="card-body " style="max-height: 10rem;">
+										<h5 class="card-title text-center">"{{ substr($d->nama_karya, 0,  20) }}"</h5>
+									<p class="card-text text-center text-dark">{{$d->nama_seniman}} - {{$d->tahun_karya}}</p>
+									</div>
+							</a>
+						</div>
+@endforeach
 
-						<!-- Single Author -->
-                        <a href="#" >
-						<div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12 p-2" >
-							<div class="author" style="min-height: 550px;">
-								<div class="author-thumb">
-									<img src="{{ asset('images/others/about-page-skill-image.jpg')}}" alt="author thumb">
-								</div>
-								<div class="author-content">
-									<h6>Author 2</h6>
-									<h4>Victor Davide</h4>
-									<p>Ut aliquid ex ea commodi quatur? Quis autem vel eum iure voluptate velit esse quam nihil molestiae consequatur .</p>
-									<div class="social-icons">
-										<ul>
-											<li class="twitter"><a href="https://twitter.com/"><i class="fa fa-twitter"></i></a></li>
-											<li class="facebook"><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
-											<li class="instagram"><a href="https://www.instagram.com/"><i class="fa fa-instagram"></i></a></li>
-											<li class="pinterest"><a href="https://www.pinterest.com/"><i class="fa fa-pinterest"></i></a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-                        </a>
-						<!--// Single Author -->
-
-						<!-- Single Author -->
-						<div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12 p-2">
-							<div class="author">
-								<div class="author-thumb">
-									<img src="images/authors/author-thumb-4.jpg" alt="author thumb">
-								</div>
-								<div class="author-content">
-									<h6>Author 4</h6>
-									<h4>Leonora Johnson</h4>
-									<p>Ut aliquid ex ea commodi quatur? Quis autem vel eum iure voluptate velit esse quam nihil molestiae consequatur.</p>
-									<div class="social-icons">
-										<ul>
-											<li class="twitter"><a href="https://twitter.com/"><i class="fa fa-twitter"></i></a></li>
-											<li class="facebook"><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
-											<li class="instagram"><a href="https://www.instagram.com/"><i class="fa fa-instagram"></i></a></li>
-											<li class="pinterest"><a href="https://www.pinterest.com/"><i class="fa fa-pinterest"></i></a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12 p-2">
-							<div class="author">
-								<div class="author-thumb">
-									<img src="images/authors/author-thumb-4.jpg" alt="author thumb">
-								</div>
-								<div class="author-content">
-									<h6>Author 4</h6>
-									<h4>Leonora Johnson</h4>
-									<p>Ut aliquid ex ea commodi quatur? Quis autem vel eum iure voluptate velit esse quam nihil molestiae consequatur.</p>
-									<div class="social-icons">
-										<ul>
-											<li class="twitter"><a href="https://twitter.com/"><i class="fa fa-twitter"></i></a></li>
-											<li class="facebook"><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
-											<li class="instagram"><a href="https://www.instagram.com/"><i class="fa fa-instagram"></i></a></li>
-											<li class="pinterest"><a href="https://www.pinterest.com/"><i class="fa fa-pinterest"></i></a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12 p-2">
-							<div class="author">
-								<div class="author-thumb">
-									<img src="images/authors/author-thumb-4.jpg" alt="author thumb">
-								</div>
-								<div class="author-content">
-									<h6>Author 4</h6>
-									<h4>Leonora Johnson</h4>
-									<p>Ut aliquid ex ea commodi quatur? Quis autem vel eum iure voluptate velit esse quam nihil molestiae consequatur.</p>
-									<div class="social-icons">
-										<ul>
-											<li class="twitter"><a href="https://twitter.com/"><i class="fa fa-twitter"></i></a></li>
-											<li class="facebook"><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
-											<li class="instagram"><a href="https://www.instagram.com/"><i class="fa fa-instagram"></i></a></li>
-											<li class="pinterest"><a href="https://www.pinterest.com/"><i class="fa fa-pinterest"></i></a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12 p-2">
-							<div class="author">
-								<div class="author-thumb">
-									<img src="images/authors/author-thumb-4.jpg" alt="author thumb">
-								</div>
-								<div class="author-content">
-									<h6>Author 4</h6>
-									<h4>Leonora Johnson</h4>
-									<p>Ut aliquid ex ea commodi quatur? Quis autem vel eum iure voluptate velit esse quam nihil molestiae consequatur.</p>
-									<div class="social-icons">
-										<ul>
-											<li class="twitter"><a href="https://twitter.com/"><i class="fa fa-twitter"></i></a></li>
-											<li class="facebook"><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
-											<li class="instagram"><a href="https://www.instagram.com/"><i class="fa fa-instagram"></i></a></li>
-											<li class="pinterest"><a href="https://www.pinterest.com/"><i class="fa fa-pinterest"></i></a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12 p-2">
-							<div class="author">
-								<div class="author-thumb">
-									<img src="images/authors/author-thumb-4.jpg" alt="author thumb">
-								</div>
-								<div class="author-content">
-									<h6>Author 4</h6>
-									<h4>Leonora Johnson</h4>
-									<p>Ut aliquid ex ea commodi quatur? Quis autem vel eum iure voluptate velit esse quam nihil molestiae consequatur.</p>
-									<div class="social-icons">
-										<ul>
-											<li class="twitter"><a href="https://twitter.com/"><i class="fa fa-twitter"></i></a></li>
-											<li class="facebook"><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
-											<li class="instagram"><a href="https://www.instagram.com/"><i class="fa fa-instagram"></i></a></li>
-											<li class="pinterest"><a href="https://www.pinterest.com/"><i class="fa fa-pinterest"></i></a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12 p-2">
-							<div class="author">
-								<div class="author-thumb">
-									<img src="images/authors/author-thumb-4.jpg" alt="author thumb">
-								</div>
-								<div class="author-content">
-									<h6>Author 4</h6>
-									<h4>Leonora Johnson</h4>
-									<p>Ut aliquid ex ea commodi quatur? Quis autem vel eum iure voluptate velit esse quam nihil molestiae consequatur.</p>
-									<div class="social-icons">
-										<ul>
-											<li class="twitter"><a href="https://twitter.com/"><i class="fa fa-twitter"></i></a></li>
-											<li class="facebook"><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
-											<li class="instagram"><a href="https://www.instagram.com/"><i class="fa fa-instagram"></i></a></li>
-											<li class="pinterest"><a href="https://www.pinterest.com/"><i class="fa fa-pinterest"></i></a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- Single Author -->
-						<div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12 p-2">
-							<div class="author">
-								<div class="author-thumb">
-									<img src="{{ asset('images/others/about-page-skill-image.jpg')}}" alt="author thumb">
-								</div>
-								<div class="author-content">
-									<h6>Author 2</h6>
-									<h4>Victor Davide</h4>
-									<p>Ut aliquid ex ea commodi quatur? Quis autem vel eum iure voluptate velit esse quam nihil molestiae consequatur .</p>
-									<div class="social-icons">
-										<ul>
-											<li class="twitter"><a href="https://twitter.com/"><i class="fa fa-twitter"></i></a></li>
-											<li class="facebook"><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
-											<li class="instagram"><a href="https://www.instagram.com/"><i class="fa fa-instagram"></i></a></li>
-											<li class="pinterest"><a href="https://www.pinterest.com/"><i class="fa fa-pinterest"></i></a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!--// Single Author -->
-
-						<!-- Single Author -->
-						<div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12 p-2" >
-							<div class="author">
-								<div class="author-thumb">
-									<img src="images/authors/author-thumb-4.jpg" alt="author thumb">
-								</div>
-								<div class="author-content">
-									<h6>Author 4</h6>
-									<h4>Leonora Johnson</h4>
-									<p>Ut aliquid ex ea commodi quatur? Quis autem vel eum iure voluptate velit esse quam nihil molestiae consequatur.</p>
-									<div class="social-icons">
-										<ul>
-											<li class="twitter"><a href="https://twitter.com/"><i class="fa fa-twitter"></i></a></li>
-											<li class="facebook"><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
-											<li class="instagram"><a href="https://www.instagram.com/"><i class="fa fa-instagram"></i></a></li>
-											<li class="pinterest"><a href="https://www.pinterest.com/"><i class="fa fa-pinterest"></i></a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- Single Author -->
-						<div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12 p-2">
-							<div class="author">
-								<div class="author-thumb">
-									<img src="{{ asset('images/others/about-page-skill-image.jpg')}}" alt="author thumb">
-								</div>
-								<div class="author-content">
-									<h6>Author 2</h6>
-									<h4>Victor Davide</h4>
-									<p>Ut aliquid ex ea commodi quatur? Quis autem vel eum iure voluptate velit esse quam nihil molestiae consequatur .</p>
-									<div class="social-icons">
-										<ul>
-											<li class="twitter"><a href="https://twitter.com/"><i class="fa fa-twitter"></i></a></li>
-											<li class="facebook"><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
-											<li class="instagram"><a href="https://www.instagram.com/"><i class="fa fa-instagram"></i></a></li>
-											<li class="pinterest"><a href="https://www.pinterest.com/"><i class="fa fa-pinterest"></i></a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!--// Single Author -->
-
-						<!-- Single Author -->
-						<div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12 p-2">
-							<div class="author">
-								<div class="author-thumb">
-									<img src="images/authors/author-thumb-4.jpg" alt="author thumb">
-								</div>
-								<div class="author-content">
-									<h6>Author 4</h6>
-									<h4>Leonora Johnson</h4>
-									<p>Ut aliquid ex ea commodi quatur? Quis autem vel eum iure voluptate velit esse quam nihil molestiae consequatur.</p>
-									<div class="social-icons">
-										<ul>
-											<li class="twitter"><a href="https://twitter.com/"><i class="fa fa-twitter"></i></a></li>
-											<li class="facebook"><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
-											<li class="instagram"><a href="https://www.instagram.com/"><i class="fa fa-instagram"></i></a></li>
-											<li class="pinterest"><a href="https://www.pinterest.com/"><i class="fa fa-pinterest"></i></a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12 p-2">
-							<div class="author">
-								<div class="author-thumb">
-									<img src="images/authors/author-thumb-4.jpg" alt="author thumb">
-								</div>
-								<div class="author-content">
-									<h6>Author 4</h6>
-									<h4>Leonora Johnson</h4>
-									<p>Ut aliquid ex ea commodi quatur? Quis autem vel eum iure voluptate velit esse quam nihil molestiae consequatur.</p>
-									<div class="social-icons">
-										<ul>
-											<li class="twitter"><a href="https://twitter.com/"><i class="fa fa-twitter"></i></a></li>
-											<li class="facebook"><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
-											<li class="instagram"><a href="https://www.instagram.com/"><i class="fa fa-instagram"></i></a></li>
-											<li class="pinterest"><a href="https://www.pinterest.com/"><i class="fa fa-pinterest"></i></a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12 p-2">
-							<div class="author">
-								<div class="author-thumb">
-									<img src="images/authors/author-thumb-4.jpg" alt="author thumb">
-								</div>
-								<div class="author-content">
-									<h6>Author 4</h6>
-									<h4>Leonora Johnson</h4>
-									<p>Ut aliquid ex ea commodi quatur? Quis autem vel eum iure voluptate velit esse quam nihil molestiae consequatur.</p>
-									<div class="social-icons">
-										<ul>
-											<li class="twitter"><a href="https://twitter.com/"><i class="fa fa-twitter"></i></a></li>
-											<li class="facebook"><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
-											<li class="instagram"><a href="https://www.instagram.com/"><i class="fa fa-instagram"></i></a></li>
-											<li class="pinterest"><a href="https://www.pinterest.com/"><i class="fa fa-pinterest"></i></a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12 p-2">
-							<div class="author">
-								<div class="author-thumb">
-									<img src="images/authors/author-thumb-4.jpg" alt="author thumb">
-								</div>
-								<div class="author-content">
-									<h6>Author 4</h6>
-									<h4>Leonora Johnson</h4>
-									<p>Ut aliquid ex ea commodi quatur? Quis autem vel eum iure voluptate velit esse quam nihil molestiae consequatur.</p>
-									<div class="social-icons">
-										<ul>
-											<li class="twitter"><a href="https://twitter.com/"><i class="fa fa-twitter"></i></a></li>
-											<li class="facebook"><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
-											<li class="instagram"><a href="https://www.instagram.com/"><i class="fa fa-instagram"></i></a></li>
-											<li class="pinterest"><a href="https://www.pinterest.com/"><i class="fa fa-pinterest"></i></a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12 p-2">
-							<div class="author">
-								<div class="author-thumb">
-									<img src="images/authors/author-thumb-4.jpg" alt="author thumb">
-								</div>
-								<div class="author-content">
-									<h6>Author 4</h6>
-									<h4>Leonora Johnson</h4>
-									<p>Ut aliquid ex ea commodi quatur? Quis autem vel eum iure voluptate velit esse quam nihil molestiae consequatur.</p>
-									<div class="social-icons">
-										<ul>
-											<li class="twitter"><a href="https://twitter.com/"><i class="fa fa-twitter"></i></a></li>
-											<li class="facebook"><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
-											<li class="instagram"><a href="https://www.instagram.com/"><i class="fa fa-instagram"></i></a></li>
-											<li class="pinterest"><a href="https://www.pinterest.com/"><i class="fa fa-pinterest"></i></a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12 p-2">
-							<div class="author">
-								<div class="author-thumb">
-									<img src="images/authors/author-thumb-4.jpg" alt="author thumb">
-								</div>
-								<div class="author-content">
-									<h6>Author 4</h6>
-									<h4>Leonora Johnson</h4>
-									<p>Ut aliquid ex ea commodi quatur? Quis autem vel eum iure voluptate velit esse quam nihil molestiae consequatur.</p>
-									<div class="social-icons">
-										<ul>
-											<li class="twitter"><a href="https://twitter.com/"><i class="fa fa-twitter"></i></a></li>
-											<li class="facebook"><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
-											<li class="instagram"><a href="https://www.instagram.com/"><i class="fa fa-instagram"></i></a></li>
-											<li class="pinterest"><a href="https://www.pinterest.com/"><i class="fa fa-pinterest"></i></a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-
-
-
-						<!--// Single Author -->
-
+					</div>
+					{{-- Pagination --}}<br><br><br>
+					<div class="d-flex justify-content-center">
+						{!! $data->links() !!}
 					</div>
 				</div>
+				
+				<div class="spacee"></div>
 			</section>
 			<!--// Typical Author Area -->
 @endsection
