@@ -15,10 +15,13 @@ class isSuperAdmin
      */
     public function handle($request, Closure $next)
     {
-    	if(Auth::check() && Auth::user()->isSuperAdmin == TRUE && Auth::user()->isAdmin == FALSE ){
+    	// if(Auth::check() && Auth::user()->isSuperAdmin == TRUE && Auth::user()->isAdmin == FALSE ){
+    	if(Auth::check() && Auth::user()->isSuperAdmin == TRUE  ){
             return $next($request);
+        }else{
+
+            return abort(404);
         }
-        return abort(404);
 
     }
 }

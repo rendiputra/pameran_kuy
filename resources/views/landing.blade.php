@@ -67,22 +67,31 @@
 					<!-- Nagivation -->
 					<nav class="bn-navigation text-right">
 						<ul>
-							<li><a href="index.html">home</a></li>
-							<li><a href="about-us.html">about us</a></li>
-							<li><a href="index.html">pages</a></li>
-							<li><a href="schedule.html">Hubungi Kami</a></li>
-							@guest
-							<li class="nav-item"><a href="/login" class=" btn btn-primary">Login</a></li>
-							@endguest
-							<!-- <li><a href="blog.html">blog</a>
+							<li><a href="/">home</a></li>
+							<li><a href="/galeri">Galeri</a></li>
+							<li><a href="/">pages</a></li>
+							<li><a href="/tentang-kami">Tentang Kami</a></li>
+					@guest
+                            <li><a href="/login" class=" btn btn-outline-primary ml-1 pt-2 pb-2 mr-2 text-white">Login</a></li>
+                            <li><a href="/register" class=" btn btn-primary pt-2 pb-2 ml-2 text-white">Daftar</a></li>
+					@else
+							<li><a href="#" class="text-danger">{{ substr(Auth::user()->name, 0,  20) }}</a>
 								<ul>
-									<li><a href="blog.html">Blog</a></li>
-									<li><a href="blog-rightsidebar.html">Blog Right Sidebar</a></li>
-									<li><a href="blog-details.html">Blog Details</a></li>
-									<li><a href="blog-details-leftsidebar.html">Blog Details Left Sidebar</a></li>
+									<li><a href="/home">Dashbord</a></li>
+									<li>
+										<a class="dropdown-item" href="{{ route('logout') }}"
+										onclick="event.preventDefault();
+														document.getElementById('logout-form').submit();">
+											{{ __('Logout') }}
+										</a>
+
+										<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+											@csrf
+										</form>
+									</li>									
 								</ul>
-							</li> -->
-						</ul>
+							</li>
+					@endguest
 					</nav>
 					<!--// Nagivation -->
 <!-- 					
@@ -114,7 +123,7 @@
 					@if	($dateNow<$date)
                         <div class="banner-countbox event-countdown" data-countdown="2020/12/25"></div>
 					@endif
-                        <h1>Pameran virtual</h1>
+                        <h1>Pameran karya untuk Indonesia</h1>
                         <h4>25-31 Desember 2020 | 237 Karya 126 Seniman</h4>
 						@if	($dateNow<$date)
                         <a href="/register" class="cr-btn cr-btn-lg cr-btn-blue">

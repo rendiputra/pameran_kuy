@@ -17,7 +17,8 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700,900" rel="stylesheet">
     <!-- Google font (font-family: 'Raleway', sans-serif;) -->
     <link href="https://fonts.googleapis.com/css?family=Raleway:400,700,800" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+    {{-- <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"> --}}
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&display=swap" rel="stylesheet">
 
     <!-- Stylesheets -->
 	<!-- {{ asset('')}} -->
@@ -71,12 +72,33 @@
 					<nav class="bn-navigation text-right">
 						<ul>
 							<li><a href="/">home</a></li>
-							<li><a href="about-us.html">about us</a></li>
+							<li><a href="/galeri">Galeri</a></li>
 							<li><a href="/">pages</a></li>
-							<li><a href="schedule.html">Hubungi Kami</a></li>
+							<li><a href="/tentang-kami">Tentang Kami</a></li>
 							@guest
-							<li class="nav-item"><a href="/login" class=" btn btn-primary">Login</a></li>
-							@endguest
+                            <li><a href="/login" class="btn btn-outline-primary pt-2 pb-2 mr-2 text-white" >Login</a></li>
+                            <li><a href="/register" class=" btn btn-primary pt-2 pb-2 ml-2 text-white">Daftar</a></li>
+                            @else
+                                <li><a href="#" class="text-danger">{{ substr(Auth::user()->name, 0,  20) }}</a>
+                                    <ul>
+                                        <li><a href="/home">Dashbord</a></li>
+                                        <li>
+                                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                            document.getElementById('logout-form').submit();">
+                                                {{ __('Logout') }}
+                                            </a>
+
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                @csrf
+                                            </form>
+                                        </li>
+                                        
+                                        
+                                    </ul>
+                                </li>
+                            @endguest
+                            
 						</ul>
 					</nav>
                 </div>
@@ -101,7 +123,7 @@
 			<div class="footer-copyright-area " style="background-color: #18212e">
 				<div class="container">
 					<div class="footer-copyright text-center">
-						<p>Copyright ©2020 | Challenge Dicoding</p>
+						<p style="font-size: 1.23rem">Copyright ©2020 | Challenge Dicoding</p>
 					</div>
 				</div>
 			</div>

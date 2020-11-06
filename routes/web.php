@@ -16,9 +16,6 @@
 Route::get('/', function () {
     return view('landing');
 });
-Route::get('/asd', function () {
-    return view('user.tes1');
-});
 
 
 // pengunjung
@@ -30,15 +27,15 @@ Route::get('/galeri/detail/{id}', 'HomeController@show_galeri_detail')->name('ga
 
 
 // Admin
-Route::group(['middleware'=>'isSuperAdmin'],function(){
+Route::group(['middleware'=>'isAdmin'],function(){
     Route::get('/karya/create', 'HomeController@create_karya')->name('create_karya');
-    Route::post('/karya/create', 'HomeController@tambah_karya')->name('tambah_karya');
-    Route::get('/karya/edit', 'HomeController@create_karya')->name('create_karya');
-    
+    Route::post('/karya/create', 'HomeController@insert_karya')->name('insert_karya');
+    Route::get('/karya/edit/{id}', 'HomeController@edit_karya_show')->name('edit_karya_show');
+    Route::post('/karya/edit', 'HomeController@edit_karya')->name('edit_karya');
+    Route::delete('/karya/hapus/{id}', 'HomeController@hapus_karya')->name('hapus_karya');
     
     
     // Seniman
-    Route::group(['middleware'=>'isAdmin','middleware'=>'isAdmin'],function(){
-            
+    Route::group(['middleware'=>'isSuperAdmin','middleware'=>'isAdmin'],function(){
         });
 });
