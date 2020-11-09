@@ -17,6 +17,8 @@ class isAdmin
     {
     	if(Auth::check() && Auth::user()->isAdmin == TRUE ){
             return $next($request);
+        }elseif(Auth::check() && Auth::user()->isSuperAdmin == TRUE ){
+            return $next($request);
         }else{
             return abort(404);
         }

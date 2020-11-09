@@ -64,15 +64,16 @@
 {{-- SENIMAN --}}
 @elseif (Auth::user()->isAdmin == 1)
 
+                    {{-- NOTIFIKASI --}}
                     @if (\Session::has('error'))
                         <div class="alert alert-warning alert-dismissible">
                             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                             <strong>Peringatan!</strong> {{\Session::get('error')}}
                         </div>
-                    @elseif (\Session::has('error'))
+                    @elseif (\Session::has('sukses'))
                         <div class="alert alert-success alert-dismissible">
                             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                            <strong>Sukses!</strong> {{\Session::get('error')}}
+                            <strong>Sukses!</strong> {{\Session::get('sukses')}}
                         </div>
                     @endif
                     
@@ -82,23 +83,24 @@
                             <table class="table table-striped mt-3 mb-3">
                                 <thead>
                                 <tr>
-                                    <th scope="col">#</th>
+                                    {{-- <th scope="col">#</th> --}}
                                     <th scope="col">Nama Karya</th>
                                     <th scope="col">Tahun Karya</th>
                                     <th scope="col">Aksi</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-@php
-    $i = 1;
-@endphp
-@if (!empty($jml))
-    
-    @foreach ($karya as $k)
+    @php
+        $i = 1;
+    @endphp
+    {{-- CEK DATA --}}
+    @if (!empty($jml))
+        
+        @foreach ($karya as $k)
     
 
                                 <tr>
-                                    <th scope="row">{{$i++}}</th>
+                                    {{-- <th scope="row">{{$i++}}</th> --}}
                                     <td>{{$k->nama_karya}}</td>
                                     <td>{{$k->tahun_karya}}</td>
                                     <td>
@@ -111,18 +113,26 @@
                                         </form>
                                     </td>
                                 </tr>
-    @endforeach
-@else
+        @endforeach
+    @else
                                 <tr><th colspan="4" class="text-center">--- Tidak ada data ---</th></tr> 
-@endif
+    @endif
 
                                 </tbody>
                             </table>
+                            <div class="d-flex justify-content-center">
+                                {!! $karya->links() !!} 
+                            </div>
                         </div>
 
+{{-- USER BIASA --}}
 @elseif (Auth::user()->isAdmin == 0)
-                        <p>Anda berstatus sebagai pengunjung, jika anda berminat untuk memajang karya anda silahkan daftarkan diri anda sebagai seniman.</p>    
-                        <a href="/users/daftar-seniman" class="btn btn-primary" style="font-size: 1.23rem;">Daftar Sebagai Seniman</a>
+                        <p>Anda berstatus sebagai pengunjung, jika anda berminat untuk memajang karya anda silahkan daftarkan diri anda sebagai seniman.</p>  
+                        <form method="POST" action="{{ route('daftar_seniman') }}">
+                            @csrf
+                            <button type="submit" class="btn btn-primary" style="font-size: 1.23rem;">Daftar Sebagai Seniman </button>
+                        </form>  
+{{-- Request Tidak Valid --}}
 @else 
                         <p class="text-danger">AKSES TIDAK VALID!</p>
 @endif

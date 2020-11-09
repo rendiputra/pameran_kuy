@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title','Detail Galeri')
+@section('title','Detail Karya')
 @section('css')
 .spacee{
     width: 100%;
@@ -111,19 +111,13 @@ p{
         </div>
         <div class="card text-center">
             <div class="card-header">
-                <ul class="nav nav-tabs" id="myTab" role="tablist">
-                    <li class="nav-item">
-                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true" style="font-size: 1.23rem">Detail</a>
-                    </li>
-                    <li class="nav-item">
-                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false" style="font-size: 1.23rem">Diskusi</a>
-                    </li>
-                </ul>
+                <h3>{{$data->nama_karya}}</h3>
             </div>
             <div class="card-body">
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                        <h3 style="font-size: 1.93rem">{{$data->nama_karya}}</h3>
+                        {{-- <h3 style="font-size: 1.93rem">{{$data->nama_karya}}</h3> --}}
+                        
                         <center>
                         <div class="text-center col-md-9 col-xl-10">
                             {{-- <img src="{{ asset('foto_karya')}}/{{ $data->gambar}}" class="rounded img-fluid" alt="{{$data->nama_karya}}" style="max-width: 700px;"> --}}
@@ -144,6 +138,11 @@ p{
                                       <td>Seniman</td>
                                       <td>:</td>
                                       <td><strong>{{$data->nama_seniman}}</strong></td>
+                                    </tr>
+                                    <tr>
+                                      <td>Uploader</td>
+                                      <td>:</td>
+                                      <td><strong>{{$data->name}}</strong></td>
                                     </tr>
                                     <tr>
                                       <td>Tahun</td>
@@ -171,11 +170,18 @@ p{
                         <div class="ml-4 mr-5 @if (strlen($str) <= 100) text-center @else  text-justify @endif" style="font-size: 15.9rem" >
                             <br>{!! $data->deskripsi !!}
                         </div>
+
+                        <form method="POST" action="{{ route('list_antrian_detail_diterima',$data->id_karya) }}">
+                            @csrf
+                            <button type="submit" class="btn btn-primary" style="font-size: 1.23rem;">Terima</button>
+                        </form>  -
+                        <form method="POST" action="{{ route('list_antrian_detail_ditolak',$data->id_karya) }}">
+                            @method('DELETE')
+                            @csrf
+                            <button type="submit" class="btn btn-danger" style="font-size: 1.23rem;">Tolak</button>
+                        </form>
                     </div>
-                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                        <p>
-                        Where can I get some? There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.</p>
-                    </div>
+                    
                     </div>
             </div>
           </div>

@@ -24,6 +24,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/galeri', 'HomeController@show_galeri')->name('galeri');
 Route::get('/galeri/detail/{id}', 'HomeController@show_galeri_detail')->name('galeri_detail');
+Route::post('/users/daftar_seniman', 'HomeController@daftar_seniman')->name('daftar_seniman');
 
 
 // Admin
@@ -37,5 +38,12 @@ Route::group(['middleware'=>'isAdmin'],function(){
     
     // Seniman
     Route::group(['middleware'=>'isSuperAdmin','middleware'=>'isAdmin'],function(){
+            Route::get('/admin/list_antrian_karya', 'HomeController@list_antrian_karya')->name('list_antrian_karya');
+            Route::get('/admin/list_antrian_karya/detail/{id}', 'HomeController@list_antrian_karya_detail')->name('list_antrian_karya_detail');
+            Route::post('/admin/list_antrian_karya/detail/{id}', 'HomeController@list_antrian_detail_diterima')->name('list_antrian_detail_diterima');
+            Route::delete('/admin/list_antrian_karya/detail/{id}', 'HomeController@list_antrian_detail_ditolak')->name('list_antrian_detail_ditolak');
+
+            Route::get('/admin/list_post_diterima', 'HomeController@list_post_diterima')->name('list_post_diterima');
+            Route::get('/admin/list_post_ditolak', 'HomeController@list_post_ditolak')->name('list_post_ditolak');
         });
 });

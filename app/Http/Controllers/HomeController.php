@@ -61,26 +61,40 @@ class HomeController extends Controller
                 'antrianKarya' => $antrianKarya,
                 'karyaDitolak' => $karyaDitolak
             ]);
+
         // sebagai Seniman
         } elseif (Auth::user()->isAdmin == 1) {
             $karya = DB::table('karya')
                 ->where([
                     ['id_user', '=', Auth::user()->id ],
                     ['status', '=','1' ],
-                ])->get();
+                ])->paginate(2);
             $jml = count($karya);
             // return $jml;
             return view('home', [
                 'karya' => $karya,
                 'jml' => $jml,
             ]);
+        } else{
+            return view('home');
         }
     }
 
-    // public function galeri()
-    // {
-    //     return view('user.galeri');
-    // }
+
+
+    public function daftar_seniman()
+    {
+        $data = DB::table('users')
+                ->where([
+                    ['id', '=' , Auth::user()->id],
+                    ['isAdmin', '=' , 0],
+                ])->update(
+                    // field status: (0=antrian; 1=di Approve; 2=Ditolak; 3=Dihapus;)
+                    ['isAdmin'=> 1]
+                );
+        // return view('user.galeri');
+        return redirect()->route('home')->with('sukses','Berhasil mendaftar sebagai seniman.');
+    }
 
     public function create_karya()
     {
@@ -115,6 +129,7 @@ class HomeController extends Controller
         $name = time().'.'.$img->getClientOriginalExtension();
         $lokasi = public_path('foto_karya');
 
+        // cek image
         if($img->move($lokasi,$name)){
             $karya = new karya;
             $karya->id_user = Auth::user()->id;
@@ -133,6 +148,7 @@ class HomeController extends Controller
             return redirect()->back()->with('error','Gagal submit karya!');
         }
     }
+
     public function hapus_karya($id)
     {
         DB::table('karya')
@@ -141,7 +157,7 @@ class HomeController extends Controller
                 ['id_user', '=', Auth::user()->id]
             ])->update(
                 // field status: (0=antrian; 1=di Approve; 2=Ditolak; 3=Dihapus;)
-                ['status'=> 2]
+                ['status'=> 3]
             );
         return redirect()->back();
     }
@@ -273,5 +289,85 @@ class HomeController extends Controller
             return view('user.galeri_detail',['data'=>$data]);
         }
     }
+
+    public function list_antrian_karya()
+    {
+        $karya = DB::table('karya')
+                ->where('status','0')
+                ->get();
+        $jml = count($karya);
+        return view('admin.list_antrian', [
+            'karya' => $karya,
+            'jml' => $jml,
+        ]);
+    }
+
+    public function list_post_ditolak()
+    {
+        $karya = DB::table('karya')
+            // field status: (0=antrian; 1=di Approve; 2=Ditolak; 3=Dihapus;)
+            ->where('status','2')
+            ->get();
+        $jml = count($karya);
+        return view('admin.list_post_ditolak', [
+            'karya' => $karya,
+            'jml' => $jml,
+        ]);
+    }
+
+    public function list_post_diterima()
+    {
+        $karya = DB::table('karya')
+            // field status: (0=antrian; 1=di Approve; 2=Ditolak; 3=Dihapus;)
+            ->where('status','1')
+            ->get();
+        $jml = count($karya);
+        return view('admin.list_post_diterima', [
+            'karya' => $karya,
+            'jml' => $jml,
+        ]);
+    }
+
+    public function list_antrian_karya_detail($id)
+    {
+        $data = DB::table('karya')
+                ->join('users','karya.id_user','users.id')
+                ->where([
+                    ['karya.id_karya','=', $id],
+                    // ['karya.status', '=' , 0]
+                ])
+                ->first();
+        if(empty($data)){
+            return abort(404);
+        } else{
+            return view('admin.list_antrian_detail',['data'=>$data]);
+        }
+    }
+
+    public function list_antrian_detail_diterima($id)
+    {
+        $data = DB::table('karya')
+                ->where([
+                    // field status: (0=antrian; 1=di Approve; 2=Ditolak; 3=Dihapus;)
+                    ['id_karya', '=' , $id],
+                ])->update(['status'=>1]);
+
+        return redirect()->route('list_antrian_karya')->with('sukses','Berhasil mengkonfirmasi postingan.');
+        // return redirect()->back()->with('sukses','Berhasil mengkonfirmasi postingan.');
+    }
+    
+    public function list_antrian_detail_ditolak($id)
+    {
+        $data = DB::table('karya')
+                ->where([
+                    // field status: (0=antrian; 1=di Approve; 2=Ditolak; 3=Dihapus;)
+                    ['id_karya', '=' , $id],
+                ])->update(['status'=>2]);
+
+        return redirect()->route('list_antrian_karya')->with('sukses','Berhasil menolak postingan.');
+    }
+
+    
+    
     
 }

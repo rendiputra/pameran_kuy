@@ -82,6 +82,10 @@
                                 <li><a href="#" class="text-danger">{{ substr(Auth::user()->name, 0,  20) }}</a>
                                     <ul>
                                         <li><a href="/home">Dashbord</a></li>
+                                        @if(Auth::user()->isSuperAdmin == 1)
+                                            <li><a href="/admin/list_antrian_karya">List Antrian Post</a></li>
+                                            <li><a href="/admin/list_laporan">List Laporan Post</a></li>
+                                        @endif
                                         <li>
                                             <a class="dropdown-item" href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
