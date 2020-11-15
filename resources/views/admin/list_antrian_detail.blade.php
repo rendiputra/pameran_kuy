@@ -160,26 +160,53 @@ p{
                                       <td><strong style="font-size: 1.23rem">{{$data->dimensi}}</strong></td>
                                     </tr>
                                     <tr>
+                                      <td>Status</td>
+                                      <td>:</td>
+                                      <td>
+                                            {{-- field status: (0=antrian; 1=di Approve; 2=Ditolak; 3=Dihapus;) --}}
+                                            @if ($data->status == 0)
+                                            <span class="badge badge-secondary">Dalam Antrian</span>
+                                            @elseif ($data->status == 1)
+                                            <span class="badge badge-success">Diterima</span>
+                                            @elseif ($data->status == 2)
+                                            <span class="badge badge-danger">Ditolak</span>
+                                            @elseif ($data->status == 3)
+                                            <span class="badge badge-dark">Dihapus</span>
+                                            @endif
+                                      </td>
+                                    </tr>
+                                    <tr>
                                   </table>
                             </div>
                         </div>
                         @php
                             $str = $data->deskripsi;
-                            // $len = strlen($str);
                         @endphp
                         <div class="ml-4 mr-5 @if (strlen($str) <= 100) text-center @else  text-justify @endif" style="font-size: 15.9rem" >
                             <br>{!! $data->deskripsi !!}
                         </div>
-
-                        <form method="POST" action="{{ route('list_antrian_detail_diterima',$data->id_karya) }}">
-                            @csrf
-                            <button type="submit" class="btn btn-primary" style="font-size: 1.23rem;">Terima</button>
-                        </form>  -
-                        <form method="POST" action="{{ route('list_antrian_detail_ditolak',$data->id_karya) }}">
-                            @method('DELETE')
-                            @csrf
-                            <button type="submit" class="btn btn-danger" style="font-size: 1.23rem;">Tolak</button>
-                        </form>
+                        @if ($data->status == 0)
+                            <form method="POST" action="{{ route('list_antrian_detail_diterima',$data->id_karya) }}">
+                                @csrf
+                                <button type="submit" class="btn btn-primary" style="font-size: 1.23rem;" onclick="return confirm('Anda yakin untuk menerima post?');">Terima</button>
+                            </form>  -
+                            <form method="POST" action="{{ route('list_antrian_detail_ditolak',$data->id_karya) }}">
+                                @method('DELETE')
+                                @csrf
+                                <button type="submit" class="btn btn-danger" style="font-size: 1.23rem;" onclick="return confirm('Anda yakin untuk menolak post?');">Tolak</button>
+                            </form>
+                        @elseif ($data->status == 1)
+                            <form method="POST" action="{{ route('list_antrian_detail_ditolak',$data->id_karya) }}">
+                                @method('DELETE')
+                                @csrf
+                                <button type="submit" class="btn btn-danger" style="font-size: 1.23rem;" onclick="return confirm('Anda yakin untuk menolak post?');">Tolak</button>
+                            </form>
+                        @elseif ($data->status == 2)   
+                            <form method="POST" action="{{ route('list_antrian_detail_diterima',$data->id_karya) }}">
+                                @csrf
+                                <button type="submit" class="btn btn-primary" style="font-size: 1.23rem;" onclick="return confirm('Anda yakin untuk menerima post?');">Terima</button>
+                            </form>
+                        @endif
                     </div>
                     
                     </div>

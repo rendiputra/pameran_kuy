@@ -56,6 +56,9 @@ $i = 1;
                                 <td>{{$k->tahun_karya}}</td>
                                 <td>
                                     <a href="/admin/list_antrian_karya/detail/{{$k->id_karya}}" class="btn btn-primary mr-2 mb-2">Detail</a>
+                                    <button type="button" class="btn btn-success mr-2" data-toggle="modal" data-target="#exampleModal{{$i}}">
+                                        Terima
+                                    </button>
                                     <button type="button" class="btn btn-warning mr-2" data-toggle="modal" data-target="#exampleModal{{$i}}">
                                         Tolak
                                     </button>
@@ -63,18 +66,43 @@ $i = 1;
                                 </td>
                             </tr>
 
-                            <!-- Modal -->
-                            <div class="modal fade" id="exampleModal{{$i++}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <!-- Modal Terima -->
+                            <div class="modal fade" id="exampleModal{{$i}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">{{$k->nama_karya}}</h5>
+                                        <h5 class="modal-title" id="exampleModalLabel">Konfirmasi</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                         </div>
                                         <div class="modal-body">
-                                            Apakah anda yakin menolak post "{{$k->nama_karya}}"
+                                        Apakah anda yakin untuk menerima post "{{$k->nama_karya}}" ?
+                                        </div> 
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <form method="POST" action="{{ route('list_antrian_detail_diterima',$k->id_karya) }}">
+                                                @csrf
+                                                <button type="submit" class="btn btn-success" style="font-size: 1.23rem;">Terima</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+
+                            <!-- Modal Ditolak -->
+                            <div class="modal fade" id="exampleModal2{{$i++}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Konfirmasi</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Apakah anda yakin menolak post "{{$k->nama_karya}}" ?
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

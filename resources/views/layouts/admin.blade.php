@@ -8,9 +8,8 @@
     <title>@yield('title') - Pameran Kuy</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Favicons -->
-    <link rel="shortcut icon" href="images/favicon.ico">
+    <meta name="dicoding:email" content="rendiputrapradana@gmail.com">
+    
     <link rel="apple-touch-icon" href="images/icon.png">
 
     <!-- Google font (font-family: 'Lato', sans-serif;) -->
@@ -73,8 +72,7 @@
 						<ul>
 							<li><a href="/">home</a></li>
 							<li><a href="/galeri">Galeri</a></li>
-							<li><a href="/">pages</a></li>
-							<li><a href="/tentang-kami">Tentang Kami</a></li>
+							<li><a href="/tentang">Tentang Kami</a></li>
 							@guest
                             <li><a href="/login" class="btn btn-outline-primary pt-2 pb-2 mr-2 text-white" >Login</a></li>
                             <li><a href="/register" class=" btn btn-primary pt-2 pb-2 ml-2 text-white">Daftar</a></li>

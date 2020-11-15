@@ -28,7 +28,7 @@
 @foreach ($data as $d)
 						<div class="card mr-2 mt-2 ml-2 mb-2 col-xl-3 col-lg-4 col-md-4 col-sm-12 col-12" style="width: 18rem; max-height: 30rem;">
 							<a href="/galeri/detail/{{$d->id_karya}}">
-								<img class="card-img-top" src="{{ asset('foto_karya')}}/{{ $d->gambar}}" alt="Card image cap" style="max-height: 18rem; ">
+								<img class="card-img-top" src="{{ asset('foto_karya')}}/{{ $d->gambar}}" alt="{{$d->nama_karya}}" style="max-height: 18rem; ">
 									<div class="card-body " style="max-height: 10rem;">
 										<h5 class="card-title text-center">"{{ substr($d->nama_karya, 0,  20) }}"</h5>
 									<p class="card-text text-center text-dark">{{$d->nama_seniman}} - {{$d->tahun_karya}}</p>

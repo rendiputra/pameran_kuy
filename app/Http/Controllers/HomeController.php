@@ -11,8 +11,9 @@ USE Validator;
 // USE Paginate;
 
 // model
-use App\karya;
 use App\User;
+use App\karya;
+use App\report_post;
 
 class HomeController extends Controller
 {
@@ -26,12 +27,17 @@ class HomeController extends Controller
         $this->middleware('auth');
     }
 
+    
+
     /**
      * Show the application dashboard.
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+
+    
+    
+    public function home()
     {
         // sebagai Admin
         if (Auth::user()->isSuperAdmin == 1){
@@ -67,8 +73,10 @@ class HomeController extends Controller
             $karya = DB::table('karya')
                 ->where([
                     ['id_user', '=', Auth::user()->id ],
-                    ['status', '=','1' ],
-                ])->paginate(2);
+                    // field status: (0=antrian; 1=di Approve; 2=Ditolak; 3=Dihapus;)
+                    ['status', '<','3' ],
+                ])->orderBy('updated_at', 'desc')
+                ->paginate(6);
             $jml = count($karya);
             // return $jml;
             return view('home', [
@@ -145,7 +153,7 @@ class HomeController extends Controller
                 // return back()->with('sukses','Berhasil submit karya!');
                 return redirect()->route('home')->with('sukses','Berhasil submit karya!');
             }
-            return redirect()->back()->with('error','Gagal submit karya!');
+            return redirect()->route('home')->with('error','Gagal submit karya!');
         }
     }
 
@@ -159,7 +167,7 @@ class HomeController extends Controller
                 // field status: (0=antrian; 1=di Approve; 2=Ditolak; 3=Dihapus;)
                 ['status'=> 3]
             );
-        return redirect()->back();
+        return redirect()->back()->with('sukses','Berhasil menghapus karya.');
     }
 
     public function edit_karya_show($id)
@@ -177,7 +185,7 @@ class HomeController extends Controller
         if (!empty($data)){
             return view('seniman.karya_edit', ['data'=>$data]);
         }else{
-            return redirect()->back()->with('error','Permintaan tidak valid!');
+            return redirect()->route('home')->with('error','Permintaan tidak valid!');
         
         }
         
@@ -286,6 +294,7 @@ class HomeController extends Controller
         if(empty($data)){
             return abort(404);
         } else{
+            DB::table('karya')->where('id_karya','=', $id)->increment('visitors');
             return view('user.galeri_detail',['data'=>$data]);
         }
     }
@@ -344,6 +353,7 @@ class HomeController extends Controller
         }
     }
 
+    //action
     public function list_antrian_detail_diterima($id)
     {
         $data = DB::table('karya')
@@ -356,17 +366,107 @@ class HomeController extends Controller
         // return redirect()->back()->with('sukses','Berhasil mengkonfirmasi postingan.');
     }
     
+    //action
     public function list_antrian_detail_ditolak($id)
     {
         $data = DB::table('karya')
-                ->where([
-                    // field status: (0=antrian; 1=di Approve; 2=Ditolak; 3=Dihapus;)
-                    ['id_karya', '=' , $id],
-                ])->update(['status'=>2]);
+            ->where([
+                // field status: (0=antrian; 1=di Approve; 2=Ditolak; 3=Dihapus;)
+                ['id_karya', '=' , $id],
+            ])->update(['status'=>2]);
 
         return redirect()->route('list_antrian_karya')->with('sukses','Berhasil menolak postingan.');
     }
 
+    public function list_laporan()
+    {
+        $data = DB::table('report_post')
+            ->join('users','report_post.id_user','users.id')
+            ->join('karya','report_post.id_karya','karya.id_karya')
+            // field status: (0=antrian; 1=di Approve; 2=Ditolak; 3=Dihapus;)
+            ->where([
+                ['report_post.status_report', '=' , 0], // report belum direspone
+                ['karya.status', '>' , 0], //status yang di approve
+            ])->get();
+        $jml = count($data);
+
+        return view('admin.list_laporan',[
+            'data'=>$data,
+            'jml' => $jml,
+        ]);
+    }
+
+    public function list_history_laporan()
+    {
+        $data = DB::table('report_post')
+            ->join('users','report_post.id_user','users.id')
+            ->join('karya','report_post.id_karya','karya.id_karya')
+            // field status: (0=antrian; 1=di Approve; 2=Ditolak; 3=Dihapus;)
+            ->where([
+                ['report_post.status_report', '<' , 3], // report sudah direspon
+            ])->get();
+        $jml = count($data);
+
+        return view('admin.list_history_laporan',[
+            'data'=>$data,
+            'jml' => $jml,
+        ]);
+    }
+
+    public function terima_laporan_act($id)
+    {
+        $data = DB::table('report_post')
+            ->join('karya','report_post.id_karya','karya.id_karya')
+            ->where([
+                ['report_post.status_report', '=' , 0], // report belum direspone
+                ['karya.status', '=' , 1], //status yang di approve
+                // ['karya.id_karya', '=' , $id], 
+                ['report_post.id_report', '=' , $id], 
+            ])
+            ->update(
+                // field status: (0=antrian; 1=di Approve; 2=Ditolak; 3=Dihapus;)
+                ['karya.status'=>3,
+                'report_post.status_report'=>1]
+            );
+        return redirect()->route('list_laporan')->with('sukses','Berhasil menerima laporan dan menghapus postingan.');
+    }
+    
+    public function tolak_laporan_act($id)
+    {
+        $data = DB::table('report_post')
+            ->join('karya','report_post.id_karya','karya.id_karya')
+            ->where([
+                ['report_post.status_report', '=' , 0], // report belum direspone
+                ['karya.status', '=' , 1], //status yang di approve
+                // ['karya.id_karya', '=' , $id], 
+                ['report_post.id_report', '=' , $id], 
+            ])
+            ->update(
+                // field status: (0=antrian; 1=di Approve; 2=Ditolak; 3=Dihapus;)
+                ['report_post.status_report'=>2]
+            );
+        return redirect()->route('list_laporan')->with('sukses','Berhasil menerima laporan dan menghapus postingan.');
+    }
+
+    public function laporkan(Request $req)
+    {
+        $req->validate([
+            'pesan'=> 'required|max:100',
+        ],
+        [
+            'pesan.required'=> 'Alasan tidak boleh kosong',
+            'pesan.max'=> 'Alasan tidak dapat melebihi 100 karakter',
+        ]);
+        $report = new report_post;
+        $report->id_karya = $req->id;
+        $report->id_user = Auth::user()->id;
+        $report->pesan = $req->pesan;
+        // dd($report);
+        if($report->save()){
+            return redirect()->route('galeri_detail', $req->id)->with('sukses','Berhasil melaporkan!');
+        }
+        return back()->with('error','Gagal melaporkan!');
+    }
     
     
     

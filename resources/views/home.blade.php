@@ -85,7 +85,7 @@
                                 <tr>
                                     {{-- <th scope="col">#</th> --}}
                                     <th scope="col">Nama Karya</th>
-                                    <th scope="col">Tahun Karya</th>
+                                    <th scope="col">Status</th>
                                     <th scope="col">Aksi</th>
                                 </tr>
                                 </thead>
@@ -102,7 +102,15 @@
                                 <tr>
                                     {{-- <th scope="row">{{$i++}}</th> --}}
                                     <td>{{$k->nama_karya}}</td>
-                                    <td>{{$k->tahun_karya}}</td>
+                                    <td>
+                                        @if($k->status==0)
+                                            <span class="badge badge-secondary">Menunggu Konfirmasi</span>
+                                        @elseif ($k->status==1)
+                                            <span class="badge badge-success">Diterima</span>
+                                        @elseif ($k->status==2)
+                                            <span class="badge badge-danger">Ditolak</span>
+                                        @endif
+                                    </td>
                                     <td>
                                         <a href="/karya/edit/{{$k->id_karya}}" class="btn btn-primary mr-2 mb-2">Edit</a>
 
@@ -127,11 +135,34 @@
 
 {{-- USER BIASA --}}
 @elseif (Auth::user()->isAdmin == 0)
-                        <p>Anda berstatus sebagai pengunjung, jika anda berminat untuk memajang karya anda silahkan daftarkan diri anda sebagai seniman.</p>  
-                        <form method="POST" action="{{ route('daftar_seniman') }}">
-                            @csrf
-                            <button type="submit" class="btn btn-primary" style="font-size: 1.23rem;">Daftar Sebagai Seniman </button>
-                        </form>  
+                        <p>Anda saat ini berstatus sebagai pengunjung, jika anda berminat untuk memajang karya anda silahkan daftarkan diri anda sebagai seniman. Dan jangan lupa untuk submit karya anda segara ya..</p>  
+                        <button type="button" class="btn btn-primary mr-2" data-toggle="modal" data-target="#exampleModal" style="font-size: 1.23rem;">
+                            Daftar Sebagai Seniman
+                        </button>
+
+                        <!-- Modal Terima -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Konfirmasi</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    </div>
+                                    <div class="modal-body">
+                                    Apakah anda yakin untuk mendaftar sebagai seniman?
+                                    </div> 
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                                        <form method="POST" action="{{ route('daftar_seniman') }}">
+                                            @csrf
+                                            <button type="submit" class="btn btn-primary">Iya </button>
+                                        </form> 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 {{-- Request Tidak Valid --}}
 @else 
                         <p class="text-danger">AKSES TIDAK VALID!</p>

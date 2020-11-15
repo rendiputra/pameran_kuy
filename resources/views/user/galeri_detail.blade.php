@@ -97,6 +97,10 @@ p{
       width: 100%;
     }
   }
+
+  .modal-backdrop {
+    z-index: -1;
+  }
 @endsection
 @section('content')
 <section class="cr-section authors-area bg-image-2 section-padding-md" data-black-overlay="8">
@@ -110,80 +114,121 @@ p{
             </div>
         </div>
         <div class="card text-center">
-            <div class="card-header">
-                <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <div class="card-header " style="background-color: #043353">
+                {{-- <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item">
                     <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true" style="font-size: 1.23rem">Detail</a>
                     </li>
                     <li class="nav-item">
                     <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false" style="font-size: 1.23rem">Diskusi</a>
                     </li>
-                </ul>
+                </ul> --}}
+                <h3 style="font-size: 1.93rem" class="mt-2 text-white">{{$data->nama_karya}}</h3>
             </div>
             <div class="card-body">
-                <div class="tab-content" id="myTabContent">
-                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                        <h3 style="font-size: 1.93rem">{{$data->nama_karya}}</h3>
-                        <center>
-                        <div class="text-center col-md-9 col-xl-10">
-                            {{-- <img src="{{ asset('foto_karya')}}/{{ $data->gambar}}" class="rounded img-fluid" alt="{{$data->nama_karya}}" style="max-width: 700px;"> --}}
-                            <!-- The Modal -->
-                            <div id="myModal" class="modal">
-                                <span class="close">&times;</span>
-                                <img class="modal-content" id="img01">
-                                <div id="caption"></div>
-                            </div>
-                            <img id="myImg" src="{{ asset('foto_karya')}}/{{ $data->gambar}}" class="img-fluid rounded" alt="{{$data->nama_karya}}" >
+                  
+                  <center>
+                  <div class="text-center col-md-9 col-xl-10">
+                      @if (\Session::has('error'))
+                          <div class="alert alert-warning alert-dismissible">
+                              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                              <strong>Peringatan!</strong> {{\Session::get('error')}}
+                          </div>
+                      @elseif (\Session::has('sukses'))
+                          <div class="alert alert-success alert-dismissible">
+                              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                              <strong>Sukses!</strong> {{\Session::get('sukses')}}
+                          </div>
+                      @endif
+                      {{-- <img src="{{ asset('foto_karya')}}/{{ $data->gambar}}" class="rounded img-fluid" alt="{{$data->nama_karya}}" style="max-width: 700px;"> --}}
+                      <!-- The Modal -->
+                      <div id="myModal" class="modal">
+                          <span class="close">&times;</span>
+                          <img class="modal-content" id="img01">
+                          <div id="caption"></div>
+                      </div>
+                      <img id="myImg" src="{{ asset('foto_karya')}}/{{ $data->gambar}}" class="img-fluid rounded" alt="{{$data->nama_karya}}" >
+                  </div>
+                  </center>
+                  <br>
+                  <div class="row justify-content-center text-center">
+                      <div class="col-auto">
+                          <table style="margin-left: auto; margin-right: auto; font-size: 1.23rem;">
+                              <tr>
+                                <td>Seniman</td>
+                                <td>:</td>
+                                <td><strong>{{$data->nama_seniman}}</strong></td>
+                              </tr>
+                              <tr>
+                                <td>Tahun</td>
+                                <td>:</td>
+                                <td><strong>{{$data->tahun_karya}}</strong></td>
+                              </tr>
+                              <tr>
+                                <td>Media</td>
+                                <td>:</td>
+                                <td><strong>{{$data->media}}</strong></td>
+                              </tr>
+                              <tr>
+                                <td>Ukuran</td>
+                                <td>:</td>
+                                <td><strong style="font-size: 1.23rem">{{$data->dimensi}}</strong></td>
+                              </tr>
+                              <tr>
+                            </table>
+                      </div>
+                  </div>
+                  @php
+                      $str = $data->deskripsi;
+                      // $len = strlen($str);
+                  @endphp
+                  <div class="ml-4 mr-5 @if (strlen($str) <= 100) text-center @else  text-justify @endif" style="font-size: 15.9rem" >
+                      <br>{!! $data->deskripsi !!}
+                  </div>
+                  <div class="text-left mt-5">
+                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal">
+                      Laporkan
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Laporkan</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <form method="POST" action="{{ route('laporkan') }}">
+                              @csrf
+                              <div class="form-group">
+                                <label>Alasan Laporan</label>
+                                <input type="text" name="pesan" class="form-control"  aria-describedby="pesanHelp" placeholder="Alasan">
+                                <input type="hidden" name="id" value="{{$data->id_karya}}"> 
+                                <small id="pesanHelp" class="form-text text-muted">Wajib mengisi bidang.</small>
+                              </div>
+                            
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                            <button type="submit" class="btn btn-primary">Kirim</button>
+                          </form>
+                          </div>
                         </div>
-                        </center>
-                        <br>
-                        <div class="row justify-content-center text-center">
-                            <div class="col-auto">
-                                <table style="margin-left: auto; margin-right: auto; font-size: 1.23rem;">
-                                    <tr>
-                                      <td>Seniman</td>
-                                      <td>:</td>
-                                      <td><strong>{{$data->nama_seniman}}</strong></td>
-                                    </tr>
-                                    <tr>
-                                      <td>Tahun</td>
-                                      <td>:</td>
-                                      <td><strong>{{$data->tahun_karya}}</strong></td>
-                                    </tr>
-                                    <tr>
-                                      <td>Media</td>
-                                      <td>:</td>
-                                      <td><strong>{{$data->media}}</strong></td>
-                                    </tr>
-                                    <tr>
-                                      <td>Ukuran</td>
-                                      <td>:</td>
-                                      <td><strong style="font-size: 1.23rem">{{$data->dimensi}}</strong></td>
-                                    </tr>
-                                    <tr>
-                                  </table>
-                            </div>
-                        </div>
-                        @php
-                            $str = $data->deskripsi;
-                            // $len = strlen($str);
-                        @endphp
-                        <div class="ml-4 mr-5 @if (strlen($str) <= 100) text-center @else  text-justify @endif" style="font-size: 15.9rem" >
-                            <br>{!! $data->deskripsi !!}
-                        </div>
+                      </div>
                     </div>
-                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                        <p>
-                        Where can I get some? There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.</p>
-                    </div>
-                    </div>
-            </div>
-          </div>
-    
-          
+
+                  </div>
+                </div>
+              </div>
+              <div class="spacee"></div>
         </div>
-        <div class="spacee"></div>
+        
+        
     </section>
+    
 @endsection
 
 @section('js')

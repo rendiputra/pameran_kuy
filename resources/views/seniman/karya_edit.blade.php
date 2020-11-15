@@ -2,7 +2,7 @@
 @section('title','Submit Karya')
 @section('content')
 <div class="spacer"></div> 
-<div class="container">{//{dd($data)}}
+<div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -11,7 +11,7 @@
                 <div class="card-body">
                   <div class="alert alert-warning alert-dismissible">
                     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                    <strong>Peringatan!</strong> Apabila anda mengedit data karya maka akan dilakukan pengecekan ulang dan akan masuk daftar antrian submit karya.
+                    <strong>Peringatan!</strong> Apabila anda mengedit data karya maka akan dilakukan pengecekan ulang oleh petugas dan akan masuk daftar antrian submit karya.
                   </div>
                 <form  method="POST" action="/karya/edit/" enctype="multipart/form-data">
                     <input class="form-control" type="hidden" name="_token" value="{{ csrf_token() }}">
