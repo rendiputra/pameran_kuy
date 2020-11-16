@@ -13,9 +13,6 @@
 // Pameran KUI (Karya Untuk Indonesia)
 
 // Guest
-// Route::get('/', function () {
-//     return view('landing');
-// });
 Route::get('/', 'FrontController@index')->name('index');
 Route::get('/tentang', 'FrontController@tentang_kami')->name('tentang_kami');
 
@@ -53,7 +50,5 @@ Route::group(['middleware'=>'isAdmin'],function(){
             Route::post('/admin/terima_laporan/{id}', 'HomeController@terima_laporan_act')->name('terima_laporan_act');
             Route::post('/admin/tolak_laporan/{id}', 'HomeController@tolak_laporan_act')->name('tolak_laporan_act');
             Route::get('/admin/list_laporan/history', 'HomeController@list_history_laporan')->name('list_history_history');
-
-            
         });
 });

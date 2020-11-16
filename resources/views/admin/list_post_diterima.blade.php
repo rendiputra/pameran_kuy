@@ -39,7 +39,7 @@
                             <thead>
                             <tr>
                                 <th scope="col">Nama Karya</th>
-                                <th scope="col">Tahun Karya</th>
+                                <th scope="col">Nama Seniman</th>
                                 <th scope="col">Aksi</th>
                             </tr>
                             </thead>
@@ -51,17 +51,39 @@ $i = 1;
     @foreach ($karya as $k)
                             <tr>
                                 <td>{{$k->nama_karya}}</td>
-                                <td>{{$k->tahun_karya}}</td>
+                                <td>{{$k->nama_seniman}}</td>
                                 <td>
                                     <a href="/admin/list_antrian_karya/detail/{{$k->id_karya}}" class="btn btn-primary mr-2 mb-2">Detail</a>
-
-                                    <form method="POST" action="/admin/list_antrian_karya/detail/{{$k->id_karya}}">
-                                            @method('DELETE')
-                                            @csrf
-                                            <button type="submit" class="btn btn-warning">Tolak</button>
-                                    </form>
+                                    <button type="button" class="btn btn-danger mr-2" data-toggle="modal" data-target="#exampleModal{{$i}}">
+                                        Tarik Postingan
+                                    </button>
+                                    
                                 </td>
                             </tr>
+                            <!-- Modal Tolak -->
+                            <div class="modal fade" id="exampleModal{{$i++}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Konfirmasi</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Apakah anda yakin untuk menarik post "{{$k->nama_karya}}" dan memasukannya ke daftar post ditolak?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <form method="POST" action="/admin/list_antrian_karya/detail/{{$k->id_karya}}">
+                                                @method('DELETE')
+                                                @csrf
+                                                <button type="submit" class="btn btn-warning">Tolak</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
     @endforeach
 @else
                             <tr><th colspan="4" class="text-center">--- Tidak ada data ---</th></tr> 

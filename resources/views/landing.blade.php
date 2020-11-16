@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="zxx">
+<html lang="id">
 
 
 <head>
@@ -30,15 +30,8 @@
 </head>
 
 <body>
-    <!--[if lte IE 9]>
-		<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-	<![endif]-->
-
-
-    <!-- Wrapper -->
     <div id="wrapper" class="wrapper">
-        
-        <!-- Header -->
+
         <div class="header header-style-1 header-transparent sticky-header">
             <div class="container">
 				<div class="mobile-menu d-block d-lg-none">
@@ -90,9 +83,7 @@
                 </div>
             </div>
         </div>
-        <!--// Header -->
 
-        <!-- Header Banner -->
         <div class="banner-area banner-slider-active">
 
             <!-- Single Banner -->
@@ -124,13 +115,13 @@
         <!-- Page Content -->
         <main id="page-content">
             
-			<!-- Portfolio Area -->
+			<!-- Koleksi Area -->
 			<section class="cr-section portfolio-area bg-white section-padding-md">
 				<div class="container">
 					<div class="row justify-content-center">
 						<div class="col-lg-8 col-md-10 col-12">
 							<div class="section-title text-center">
-								<h2>KOLEKSI FAVORIT</h2>
+								<h2>KOLEKSI POPULER</h2>
 								<center><hr style="width: 50px; border: 3px solid rgb(0, 0, 0); border-radius: 5px;" class="text-center"></center>
 							</div>
 						</div>
@@ -138,7 +129,7 @@
 					<div class="row justify-content-center portfolios portfolio-popup-gallery-active">
 
 @foreach ($data as $d)
-						<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12">
+						<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12" >
 							<a href="{{ asset('foto_karya')}}/{{ $d->gambar}}" class="portfolio">
 								<div class="portfolio-thumb">
 									<img src="{{ asset('foto_karya')}}/{{ $d->gambar}}" alt="{{ substr($d->nama_karya, 0,  50) }} - {{ substr($d->nama_seniman, 0,  50) }}">
@@ -150,23 +141,18 @@
 							</a>
 						</div>
 @endforeach
-
-						
-						
+	
 					</div>
-					<div class="button-group mt-1 text-center" >
-
-						<a href="/register" class="cr-btn cr-btn-blue">
+					<div class="button-group pt-4 text-center" >
+						<a href="/galeri" class="cr-btn cr-btn-blue">
 							<span>Lihat Lebih Banyak</span>
-						</a>							
-
-						
+						</a>	
 					</div>
 				</div>
 			</section>
-			<!--// Portfolio Area -->
+			<!--// Koleksi Area -->
 
-			<!-- About Area -->
+			<!-- Tentang Area -->
             <section class="cr-section about-area   mb-5 mt-3" style="background-color: #f5f5f5"><br><br>
                 <div class="container align-content-center">
 					<div class="card col-md-12" style="box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);">
@@ -175,8 +161,14 @@
 								<br><br>
 								<h2 class="">Pameran Kui</h2>
 								<center><hr style="width: 50px; border: 3px solid rgb(0, 0, 0); border-radius: 5px;" ></center>
-								<p class="text-justify">Pameran KUI(Karya Untuk Indonesia) adalah Cras lectus dui, porta rhoncus nulla et, maximus tempor justo. In eget neque dui. Vivamus dolor neque, accumsan ac volutpat non, venenatis eu velit. Nulla commodo hendrerit sem a lacinia. Fusce vulputate ante eu mattis hendrerit. Aenean vel luctus mi. Praesent ultrices euismod molestie. Nunc ut felis egestas, tempus erat ac, interdum elit. Fusce vel lectus eu dolor ornare tristique a quis quam. Suspendisse potenti.</p>
-								<p class="text-justify">Mauris aliquet lacinia massa, in tincidunt risus euismod vel. Mauris aliquet ac odio eu scelerisque. Vestibulum iaculis lectus eget iaculis egestas. Aenean ac neque urna. Nulla placerat felis at ante tincidunt maximus. Phasellus elementum ultrices augue et scelerisque. Aenean molestie quam nunc, sagittis elementum magna dictum ut. Proin id scelerisque justo, vitae scelerisque massa. Maecenas id ligula vitae libero finibus viverra a quis sem.</p>
+								<p class="text-justify">Pameran KUI(Karya Untuk Indonesia) adalah aplikasi yang dibuat untuk mendukung para seniman untuk  terus aktif dan produktif meski saat ini dihadapkan dengan pandemi COVID-19 yang berimbas ke hampir seluruh sektor.  Cras lectus dui, porta rhoncus nulla et, maximus tempor justo. In eget neque dui. Vivamus dolor neque, accumsan ac volutpat non, venenatis eu velit. Nulla commodo hendrerit sem a lacinia. Fusce vulputate ante eu mattis hendrerit. Aenean vel luctus mi. Praesent ultrices euismod molestie. Nunc ut felis egestas, tempus erat ac, interdum elit. Fusce vel lectus eu dolor ornare tristique a quis quam. Suspendisse potenti.</p>
+								<p class="text-justify">Aplikasi ini juga diikut sertakan dalam Kemenparekraf/Baparekraf Digital Challenge yang diselenggarakan oleh Dicoding. Dalam kategori Bangga Buatan Indonesia: </p>
+								<ul>
+									<li class="text-left">Desain Komunikasi Visual (DKV)</li>
+									<li class="text-left">Fotografi,</li>
+									<li class="text-left">Kerajinan Tangan (Kriya),</li>
+									<li class="text-left">Seni Rupa dan</li>
+								</ul>
 								<div class="button-group">
 									<a href="/tentang" class="cr-btn cr-btn-blue">
 										<span>Lihat Selengkapnya</span>
@@ -189,7 +181,7 @@
                     
                 </div>
             </section>
-			<!--// About Area -->
+			<!--// Tentang Area -->
 
 
         </main>
@@ -197,9 +189,6 @@
 
         <!-- Footer -->
         <div class="footer">
-
-
-			<!-- Footer Copyright Area -->
 			<div class="footer-copyright-area " style="background-color: #18212e">
 				<div class="container">
 					<div class="footer-copyright text-center">
@@ -207,13 +196,10 @@
 					</div>
 				</div>
 			</div>
-			<!--// Footer Copyright Area -->
-
         </div>
         <!--// Footer -->
 
     </div>
-    <!--// Wrapper -->
 
 
     <!-- JS Files -->

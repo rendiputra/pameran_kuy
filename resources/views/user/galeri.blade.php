@@ -16,7 +16,7 @@
 					<div class="row justify-content-center">
 						<div class="col-lg-8 col-md-10 col-12">
 							<div class="section-title section-title-white text-center">
-								<br><h2>GALERI</h2>
+								<br><h2> GALERI KOLEKSI</h2>
 								<center><hr style="width: 50px; border: 3px solid #fff; border-radius: 5px;" class="text-center"></center>
 							</div>
 						</div>

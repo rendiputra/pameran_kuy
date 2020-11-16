@@ -11,7 +11,7 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header text-center text-white" style="background-color: #18212e"><h4 class="text-white"> Daftar Antrian Karya Seni</h4></div>
+                <div class="card-header text-center text-white" style="background-color: #18212e"><h4 class="text-white"> Daftar Antrian Konfirmasi Karya Seni</h4></div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -40,7 +40,7 @@
                             <tr>
                                 {{-- <th scope="col">#</th> --}}
                                 <th scope="col">Nama Karya</th>
-                                <th scope="col">Tahun Karya</th>
+                                <th scope="col">Nama Seniman</th>
                                 <th scope="col">Aksi</th>
                             </tr>
                             </thead>
@@ -53,7 +53,7 @@ $i = 1;
                             <tr>
                                 {{-- <th scope="row">{{$i++}}</th> --}}
                                 <td>{{$k->nama_karya}}</td>
-                                <td>{{$k->tahun_karya}}</td>
+                                <td>{{$k->nama_seniman}}</td>
                                 <td>
                                     <a href="/admin/list_antrian_karya/detail/{{$k->id_karya}}" class="btn btn-primary mr-2 mb-2">Detail</a>
                                     <button type="button" class="btn btn-success mr-2" data-toggle="modal" data-target="#exampleModal{{$i}}">

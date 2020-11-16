@@ -278,7 +278,8 @@ class HomeController extends Controller
         $data = DB::table('karya')
                 ->join('users','karya.id_user','users.id')
                 ->where('karya.status',1)
-                ->paginate(8);
+                ->orderBy('karya.visitors', 'desc')
+                ->paginate(9);
         return view('user.galeri',['data'=>$data]);
     }
 
@@ -303,6 +304,7 @@ class HomeController extends Controller
     {
         $karya = DB::table('karya')
                 ->where('status','0')
+                ->orderBy('updated_at', 'desc')
                 ->get();
         $jml = count($karya);
         return view('admin.list_antrian', [
@@ -316,6 +318,7 @@ class HomeController extends Controller
         $karya = DB::table('karya')
             // field status: (0=antrian; 1=di Approve; 2=Ditolak; 3=Dihapus;)
             ->where('status','2')
+            ->orderBy('updated_at', 'desc')
             ->get();
         $jml = count($karya);
         return view('admin.list_post_ditolak', [
@@ -329,6 +332,7 @@ class HomeController extends Controller
         $karya = DB::table('karya')
             // field status: (0=antrian; 1=di Approve; 2=Ditolak; 3=Dihapus;)
             ->where('status','1')
+            ->orderBy('updated_at', 'desc')
             ->get();
         $jml = count($karya);
         return view('admin.list_post_diterima', [
@@ -387,7 +391,8 @@ class HomeController extends Controller
             ->where([
                 ['report_post.status_report', '=' , 0], // report belum direspone
                 ['karya.status', '>' , 0], //status yang di approve
-            ])->get();
+            ])->orderBy('report_post.updated_at', 'desc')
+            ->get();
         $jml = count($data);
 
         return view('admin.list_laporan',[

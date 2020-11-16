@@ -5,7 +5,7 @@
 		width: 100%;
 		height: 45px;
     }
-    p{
+    p,ul,li{
         font-size: 1.15rem;
     }
 @endsection
@@ -20,7 +20,15 @@
                         <br><br>
                         <h2 class="">Pameran Kui</h2>
                         <center><hr style="width: 50px; border: 3px solid rgb(0, 0, 0); border-radius: 5px;" ></center><br>
-                        <p class="text-justify">Pameran KUI(Karya Untuk Indonesia) adalah Cras lectus dui, porta rhoncus nulla et, maximus tempor justo. In eget neque dui. Vivamus dolor neque, accumsan ac volutpat non, venenatis eu velit. Nulla commodo hendrerit sem a lacinia. Fusce vulputate ante eu mattis hendrerit. Aenean vel luctus mi. Praesent ultrices euismod molestie. Nunc ut felis egestas, tempus erat ac, interdum elit. Fusce vel lectus eu dolor ornare tristique a quis quam. Suspendisse potenti.</p>
+                        <p class="text-justify">Pameran KUI(Karya Untuk Indonesia) adalah aplikasi yang dibuat untuk mendukung para seniman untuk  terus aktif dan produktif meski saat ini dihadapkan dengan pandemi COVID-19 yang berimbas ke hampir seluruh sektor. Dengan ada nya aplikasi ini diharapkan para seniman dapat dengan mudah untuk menampilkan karya-karya nya dan juga dapat mempermudah para penikmat karya seni untuk melihat karya para seniman. Dan harapannya kedepan akan dapat menghasilkan transaksi antara seniman dan kolektor seni yang berkontrikbusi kepada ekonomi nasional.</p>
+
+                        <p class="text-justify">Aplikasi ini juga diikut sertakan dalam Kemenparekraf/Baparekraf Digital Challenge yang diselenggarakan oleh Dicoding. Dalam kategori <b>Bangga Buatan Indonesia:</b> </p>
+								<ul>
+									<li class="text-left">Desain Komunikasi Visual (DKV),</li>
+									<li class="text-left">Fotografi,</li>
+									<li class="text-left">Kerajinan Tangan (Kriya), </li>
+									<li class="text-left">Seni Rupa</li>
+								</ul>
 
                         <p class="text-justify">Mauris aliquet lacinia massa, in tincidunt risus euismod vel. Mauris aliquet ac odio eu scelerisque. Vestibulum iaculis lectus eget iaculis egestas. Aenean ac neque urna. Nulla placerat felis at ante tincidunt maximus. Phasellus elementum ultrices augue et scelerisque. Aenean molestie quam nunc, sagittis elementum magna dictum ut. Proin id scelerisque justo, vitae scelerisque massa. Maecenas id ligula vitae libero finibus viverra a quis sem.</p>
 

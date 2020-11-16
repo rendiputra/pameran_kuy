@@ -39,7 +39,7 @@
                             <thead>
                             <tr>
                                 <th scope="col">Nama Karya</th>
-                                <th scope="col">Tahun Karya</th>
+                                <th scope="col">Nama Seniman</th>
                                 <th scope="col">Aksi</th>
                             </tr>
                             </thead>
@@ -51,7 +51,7 @@
     @foreach ($karya as $k)
                             <tr>
                                 <td>{{$k->nama_karya}}</td>
-                                <td>{{$k->tahun_karya}}</td>
+                                <td>{{$k->nama_seniman}}</td>
                                 <td >
                                     <!-- Button trigger modal -->
                                     <a href="/admin/list_antrian_karya/detail/{{$k->id_karya}}" class="btn btn-primary mr-2 mb-2">Detail</a>
