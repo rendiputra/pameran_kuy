@@ -41,4 +41,8 @@ $ php artisan key:generate
 $ php artisan jwt:generate
 $ php artisan serve
 ```
+<<<<<<< HEAD
 **Dan jangan lupa untuk dump DB file sqlnya**
+=======
+**Dan jangan lupa untuk dump DB file sqlnya**
+>>>>>>> 8728b33b7add8cef271d6cd6efb9ff69dfc03cba
