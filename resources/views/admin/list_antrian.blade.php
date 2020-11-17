@@ -32,10 +32,10 @@
                         </div>
                     @endif
                     {{-- <h4 class="text-center"> Daftar Antrian Karya Seni </h4> --}}
-                    <a href="/admin/list_post_diterima" class="btn btn-success mr-3">List Post Diterima</a>
-                    <a href="/admin/list_post_ditolak" class="btn btn-danger">List Post Ditolak</a>
+                    <a href="/admin/list_post_diterima" class="btn btn-success mr-3 text-white">List Post Diterima</a>
+                    <a href="/admin/list_post_ditolak" class="btn btn-danger text-white">List Post Ditolak</a>
                     <div class="table-responsive">
-                        <table class="table table-striped mt-3 mb-3">
+                        <table class="table table-striped table-bordered mt-3 mb-3">
                             <thead>
                             <tr>
                                 {{-- <th scope="col">#</th> --}}
@@ -55,11 +55,11 @@ $i = 1;
                                 <td>{{$k->nama_karya}}</td>
                                 <td>{{$k->nama_seniman}}</td>
                                 <td>
-                                    <a href="/admin/list_antrian_karya/detail/{{$k->id_karya}}" class="btn btn-primary mr-2 mb-2">Detail</a>
-                                    <button type="button" class="btn btn-success mr-2" data-toggle="modal" data-target="#exampleModal{{$i}}">
+                                    <a href="/admin/list_antrian_karya/detail/{{$k->id_karya}}" class="btn btn-primary mr-2 mb-2 text-white">Detail</a>
+                                    <button type="button" class="btn btn-success mr-2 text-white" data-toggle="modal" data-target="#exampleModal{{$i}}">
                                         Terima
                                     </button>
-                                    <button type="button" class="btn btn-warning mr-2" data-toggle="modal" data-target="#exampleModal{{$i}}">
+                                    <button type="button" class="btn btn-warning mr-2 text-white" data-toggle="modal" data-target="#exampleModal{{$i}}">
                                         Tolak
                                     </button>
                                     
@@ -83,7 +83,7 @@ $i = 1;
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                             <form method="POST" action="{{ route('list_antrian_detail_diterima',$k->id_karya) }}">
                                                 @csrf
-                                                <button type="submit" class="btn btn-success" style="font-size: 1.23rem;">Terima</button>
+                                                <button type="submit" class="btn btn-success text-white" style="font-size: 1.23rem;">Terima</button>
                                             </form>
                                         </div>
                                     </div>
@@ -122,6 +122,10 @@ $i = 1;
 
                             </tbody>
                         </table>
+                        <br>
+                        <div class="d-flex justify-content-center">
+                            {!! $karya->links() !!}
+                        </div>
                     </div>
                 </div>
             </div>

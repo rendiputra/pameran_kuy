@@ -80,7 +80,7 @@
                         <a href="/karya/create" class="btn btn-primary mb-3" style="font-size: 1.23rem;">Submit Karya</a>
                         <h4 class="text-center"> Daftar Karya Anda </h4>
                         <div class="table-responsive">
-                            <table class="table table-striped mt-3 mb-3">
+                            <table class="table table-striped table-bordered mt-3 mb-3">
                                 <thead>
                                 <tr>
                                     {{-- <th scope="col">#</th> --}}

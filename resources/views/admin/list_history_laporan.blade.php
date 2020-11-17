@@ -32,9 +32,9 @@
                         </div>
                     @endif
                     {{-- <h4 class="text-center"> Daftar Antrian Karya Seni </h4> --}}
-                    <a href="/admin/list_laporan" class="btn btn-primary mr-3">Daftar Laporan Post</a>
+                    <a href="/admin/list_laporan" class="btn btn-primary mr-3 text-white">Daftar Laporan Post</a>
                     <div class="table-responsive">
-                        <table class="table table-bordered mt-3 mb-3">
+                        <table class="table table-striped table-bordered mt-3 mb-3">
                             <thead>
                             <tr>
                                 {{-- <th scope="col">#</th> --}}
@@ -78,7 +78,7 @@ $i = 1;
                                     @endif
                                 </td>
                                 <td>
-                                    <a href="/admin/list_antrian_karya/detail/{{$k->id_karya}}" class="btn btn-primary mr-2 mb-2">Detail</a>
+                                    <a href="/admin/list_antrian_karya/detail/{{$k->id_karya}}" class="btn btn-primary mr-2 mb-2 text-white">Detail</a>
                                     
                                 </td>
                             </tr>
@@ -90,6 +90,10 @@ $i = 1;
 
                             </tbody>
                         </table>
+                        <br>
+                        <div class="d-flex justify-content-center">
+                            {!! $data->links() !!}
+                        </div>
                     </div>
                 </div>
             </div>

@@ -305,7 +305,7 @@ class HomeController extends Controller
         $karya = DB::table('karya')
                 ->where('status','0')
                 ->orderBy('updated_at', 'desc')
-                ->get();
+                ->paginate(6);
         $jml = count($karya);
         return view('admin.list_antrian', [
             'karya' => $karya,
@@ -319,7 +319,7 @@ class HomeController extends Controller
             // field status: (0=antrian; 1=di Approve; 2=Ditolak; 3=Dihapus;)
             ->where('status','2')
             ->orderBy('updated_at', 'desc')
-            ->get();
+            ->paginate(6);
         $jml = count($karya);
         return view('admin.list_post_ditolak', [
             'karya' => $karya,
@@ -333,7 +333,7 @@ class HomeController extends Controller
             // field status: (0=antrian; 1=di Approve; 2=Ditolak; 3=Dihapus;)
             ->where('status','1')
             ->orderBy('updated_at', 'desc')
-            ->get();
+            ->paginate(6);
         $jml = count($karya);
         return view('admin.list_post_diterima', [
             'karya' => $karya,
@@ -392,7 +392,7 @@ class HomeController extends Controller
                 ['report_post.status_report', '=' , 0], // report belum direspone
                 ['karya.status', '>' , 0], //status yang di approve
             ])->orderBy('report_post.updated_at', 'desc')
-            ->get();
+            ->paginate(6);
         $jml = count($data);
 
         return view('admin.list_laporan',[
@@ -409,7 +409,7 @@ class HomeController extends Controller
             // field status: (0=antrian; 1=di Approve; 2=Ditolak; 3=Dihapus;)
             ->where([
                 ['report_post.status_report', '<' , 3], // report sudah direspon
-            ])->get();
+            ])->paginate(6);
         $jml = count($data);
 
         return view('admin.list_history_laporan',[

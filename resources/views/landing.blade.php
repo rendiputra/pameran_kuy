@@ -10,6 +10,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="dicoding:email" content="rendiputrapradana@gmail.com">
 
+	<link rel="icon" href="{{ asset('images/brush.ico')}}" type="image/x-icon">
 
     <!-- Google font (font-family: 'Lato', sans-serif;) -->
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700,900" rel="stylesheet">
@@ -24,6 +25,7 @@
 
     <!-- Cusom css -->
     <link rel="stylesheet" href="{{ asset('css/custom.css')}}">
+    
 
     <!-- Modernizer js -->
     <script src="{{ asset('js/vendor/modernizr-3.5.0.min.js')}}"></script>
@@ -125,6 +127,10 @@
 								<center><hr style="width: 50px; border: 3px solid rgb(0, 0, 0); border-radius: 5px;" class="text-center"></center>
 							</div>
 						</div>
+					</div>
+					<div class="alert alert-warning alert-dismissible">
+						<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+						<strong>Perhatian!</strong> Mohon maaf, mungkin untuk loading websitenya akan sedikit memakan waktu lebih lama dikarenakan limit speed freehosting.
 					</div>
 					<div class="row justify-content-center portfolios portfolio-popup-gallery-active">
 

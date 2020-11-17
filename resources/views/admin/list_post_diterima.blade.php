@@ -32,10 +32,10 @@
                         </div>
                     @endif
                     {{-- <h4 class="text-center"> Daftar Antrian Karya Seni </h4> --}}
-                    <a href="/admin/list_antrian_karya" class="btn btn-primary mr-3">List Antrian Post</a>
-                    <a href="/admin/list_post_ditolak" class="btn btn-danger mr-3">List Post Ditolak</a>
+                    <a href="/admin/list_antrian_karya" class="btn btn-primary mr-3 text-white">List Antrian Post</a>
+                    <a href="/admin/list_post_ditolak" class="btn btn-danger mr-3 text-white">List Post Ditolak</a>
                     <div class="table-responsive">
-                        <table class="table table-striped mt-3 mb-3">
+                        <table class="table table-striped table-bordered mt-3 mb-3">
                             <thead>
                             <tr>
                                 <th scope="col">Nama Karya</th>
@@ -53,8 +53,8 @@ $i = 1;
                                 <td>{{$k->nama_karya}}</td>
                                 <td>{{$k->nama_seniman}}</td>
                                 <td>
-                                    <a href="/admin/list_antrian_karya/detail/{{$k->id_karya}}" class="btn btn-primary mr-2 mb-2">Detail</a>
-                                    <button type="button" class="btn btn-danger mr-2" data-toggle="modal" data-target="#exampleModal{{$i}}">
+                                    <a href="/admin/list_antrian_karya/detail/{{$k->id_karya}}" class="btn btn-primary mr-2 mb-2 text-white">Detail</a>
+                                    <button type="button" class="btn btn-danger mr-2 text-white" data-toggle="modal" data-target="#exampleModal{{$i}}">
                                         Tarik Postingan
                                     </button>
                                     
@@ -91,6 +91,10 @@ $i = 1;
 
                             </tbody>
                         </table>
+                        <br>
+                        <div class="d-flex justify-content-center">
+                            {!! $karya->links() !!}
+                        </div>
                     </div>
                 </div>
             </div>

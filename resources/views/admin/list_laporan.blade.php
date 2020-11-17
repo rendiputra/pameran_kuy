@@ -34,7 +34,7 @@
                     {{-- <h4 class="text-center"> Daftar Antrian Karya Seni </h4> --}}
                     <a href="/admin/list_laporan/history" class="btn btn-primary mr-3">Daftar History Laporan</a>
                     <div class="table-responsive">
-                        <table class="table table-bordered mt-3 mb-3">
+                        <table class="table table-striped table-bordered mt-3 mb-3">
                             <thead>
                             <tr>
                                 {{-- <th scope="col">#</th> --}}
@@ -56,8 +56,8 @@ $i = 1;
                                 <td>{{$k->name}}</td>
                                 <td>"{{$k->pesan}}"</td>
                                 <td>
-                                    <a href="/admin/list_antrian_karya/detail/{{$k->id_karya}}" class="btn btn-primary mr-2 mb-2">Detail</a>
-                                    <button type="button" class="btn btn-success mr-2 mb-2" data-toggle="modal" data-target="#exampleModal{{$i}}">
+                                    <a href="/admin/list_antrian_karya/detail/{{$k->id_karya}}" class="btn btn-primary mr-2 mb-2 text-white">Detail</a>
+                                    <button type="button" class="btn btn-success mr-2 mb-2 text-white" data-toggle="modal" data-target="#exampleModal{{$i}}">
                                         Terima Laporan
                                     </button>
                                     <button type="button" class="btn btn-warning mr-2" data-toggle="modal" data-target="#exampleModal2{{$i}}">
@@ -122,6 +122,10 @@ $i = 1;
 
                             </tbody>
                         </table>
+                        <br>
+                        <div class="d-flex justify-content-center">
+                            {!! $data->links() !!}
+                        </div>
                     </div>
                 </div>
             </div>
