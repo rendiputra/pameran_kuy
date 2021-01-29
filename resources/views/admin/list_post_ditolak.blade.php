@@ -10,7 +10,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-10">
-            <div class="card">
+            <div class="card" style="box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);">
                 <div class="card-header text-center text-white" style="background-color: #18212e"><h4 class="text-white"> Daftar Post Karya Seni Yang Ditolak</h4></div>
 
                 <div class="card-body">
@@ -35,7 +35,7 @@
                     <a href="/admin/list_antrian_karya" class="btn btn-primary mr-3 text-white">List Antrian Post</a>
                     <a href="/admin/list_post_diterima" class="btn btn-success mr-3 text-white">List Post Diterima</a>
                     <div class="table-responsive">
-                        <table class="table table-bordered table-striped mt-3 mb-3">
+                        <table class="table table-striped table-bordered mt-3 mb-3">
                             <thead>
                             <tr>
                                 <th scope="col">Nama Karya</th>

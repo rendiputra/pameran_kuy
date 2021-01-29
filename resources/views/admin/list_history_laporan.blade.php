@@ -10,7 +10,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-10">
-            <div class="card">
+            <div class="card" style="box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);">
                 <div class="card-header text-center text-white" style="background-color: #18212e"><h4 class="text-white"> Daftar History Laporan </h4></div>
 
                 <div class="card-body">
@@ -34,7 +34,7 @@
                     {{-- <h4 class="text-center"> Daftar Antrian Karya Seni </h4> --}}
                     <a href="/admin/list_laporan" class="btn btn-primary mr-3 text-white">Daftar Laporan Post</a>
                     <div class="table-responsive">
-                        <table class="table table-striped table-bordered mt-3 mb-3">
+                        <table class="table table-striped table-bordered table-bordered mt-3 mb-3">
                             <thead>
                             <tr>
                                 {{-- <th scope="col">#</th> --}}
@@ -70,9 +70,9 @@ $i = 1;
                                     @if($k->status==0)
                                             <span class="badge badge-secondary">Menunggu Konfirmasi</span>
                                         @elseif ($k->status==1)
-                                            <span class="badge badge-success">Diterima</span>
+                                            <span class="badge badge-success">On Air</span>
                                         @elseif ($k->status==2)
-                                            <span class="badge badge-danger">Ditolak</span>
+                                            <span class="badge badge-danger">Off Air</span>
                                         @elseif ($k->status==3)
                                             <span class="badge badge-dark">Dihapus</span>
                                     @endif

@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
+            <div class="card" style="box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);">
                 <div class="card-header text-center" style="background-color: #18212e"><h4 style="color: aliceblue">{{ __('Login') }}</h4></div>
 
                 <div class="card-body">
@@ -45,12 +45,6 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Login') }}
                                 </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
                             </div>
                         </div>
 

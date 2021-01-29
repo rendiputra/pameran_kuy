@@ -5,12 +5,12 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>@yield('title') - Pameran Kuy</title>
+    <title>@yield('title') - Pameran KUI</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="dicoding:email" content="rendiputrapradana@gmail.com">
 
-    <link rel="apple-touch-icon" href="images/icon.png">
+    <link rel="icon" href="{{ asset('images/brush.ico')}}" type="image/x-icon">
 
     <!-- Google font (font-family: 'Lato', sans-serif;) -->
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700,900" rel="stylesheet">
@@ -37,6 +37,9 @@
         .spacer{
             width: 100%;
         	height: 140px;
+        }
+		body { 
+            /* font-family: 'Raleway', sans-serif;  */
         }
         @yield('css');
     </style>
@@ -110,7 +113,7 @@
 			<div class="footer-copyright-area " style="background-color: #18212e">
 				<div class="container">
 					<div class="footer-copyright text-center">
-						<p style="font-size: 1.23rem">Copyright ©2020 | Challenge Dicoding</p>
+						<p style="font-size: 1.23rem">Copyright ©2021 | Re-Cloud Challenge</p>
 					</div>
 				</div>
 			</div>

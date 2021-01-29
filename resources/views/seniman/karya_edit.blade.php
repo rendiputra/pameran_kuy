@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
+            <div class="card" style="box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);">
                 <div class="card-header" style="background-color: #18212e"><h4 style="color: aliceblue" class="text-center">{{ __('Submit Karya') }}</h4></div>
 
                 <div class="card-body">
@@ -13,7 +13,7 @@
                     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                     <strong>Peringatan!</strong> Apabila anda mengedit data karya maka akan dilakukan pengecekan ulang oleh petugas dan akan masuk daftar antrian submit karya.
                   </div>
-                <form  method="POST" action="/karya/edit/" enctype="multipart/form-data">
+                <form  method="POST" action="{{ route('edit_karya') }}" enctype="multipart/form-data">
                     <input class="form-control" type="hidden" name="_token" value="{{ csrf_token() }}">
                     <input class="form-control" type="hidden" name="id" value="{{$data->id_karya}}">
                     <div class="form-group">

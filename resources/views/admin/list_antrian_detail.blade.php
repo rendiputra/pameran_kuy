@@ -109,9 +109,9 @@ p{
                 </div>
             </div>
         </div>
-        <div class="card text-center">
-            <div class="card-header">
-                <h3>{{$data->nama_karya}}</h3>
+        <div class="card text-center" style="box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);">
+            <div class="card-header" style="background-color: #043353">
+                <h3 class="text-white">{{$data->nama_karya}}</h3>
             </div>
             <div class="card-body">
                 <div class="tab-content" id="myTabContent">
@@ -188,23 +188,23 @@ p{
                         @if ($data->status == 0)
                             <form method="POST" action="{{ route('list_antrian_detail_diterima',$data->id_karya) }}">
                                 @csrf
-                                <button type="submit" class="btn btn-primary" style="font-size: 1.23rem;" onclick="return confirm('Anda yakin untuk menerima post?');">Terima</button>
+                                <button type="submit" class="btn btn-primary text-white" style="font-size: 1.23rem;" onclick="return confirm('Anda yakin untuk menerima post?');">Terima</button>
                             </form>  -
                             <form method="POST" action="{{ route('list_antrian_detail_ditolak',$data->id_karya) }}">
                                 @method('DELETE')
                                 @csrf
-                                <button type="submit" class="btn btn-danger" style="font-size: 1.23rem;" onclick="return confirm('Anda yakin untuk menolak post?');">Tolak</button>
+                                <button type="submit" class="btn btn-danger text-white" style="font-size: 1.23rem;" onclick="return confirm('Anda yakin untuk menolak post?');">Tolak</button>
                             </form>
                         @elseif ($data->status == 1)
                             <form method="POST" action="{{ route('list_antrian_detail_ditolak',$data->id_karya) }}">
                                 @method('DELETE')
                                 @csrf
-                                <button type="submit" class="btn btn-danger" style="font-size: 1.23rem;" onclick="return confirm('Anda yakin untuk menolak post?');">Tolak</button>
+                                <button type="submit" class="btn btn-danger text-white" style="font-size: 1.23rem;" onclick="return confirm('Anda yakin untuk menolak post?');">Tolak</button>
                             </form>
                         @elseif ($data->status == 2)   
                             <form method="POST" action="{{ route('list_antrian_detail_diterima',$data->id_karya) }}">
                                 @csrf
-                                <button type="submit" class="btn btn-primary" style="font-size: 1.23rem;" onclick="return confirm('Anda yakin untuk menerima post?');">Terima</button>
+                                <button type="submit" class="btn btn-primary text-white" style="font-size: 1.23rem;" onclick="return confirm('Anda yakin untuk menerima post?');">Terima</button>
                             </form>
                         @endif
                     </div>

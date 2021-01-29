@@ -12,7 +12,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-10">
-            <div class="card">
+            <div class="card" style="box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);">
                 <div class="card-header text-center text-white" style="background-color: #18212e"><p> Dashboard</p></div>
 
                 <div class="card-body">
@@ -77,7 +77,7 @@
                         </div>
                     @endif
                     
-                        <a href="/karya/create" class="btn btn-primary mb-3" style="font-size: 1.23rem;">Submit Karya</a>
+                        <a href="/karya/create" class="btn btn-primary mb-3 text-white" style="font-size: 1.23rem;">Submit Karya</a>
                         <h4 class="text-center"> Daftar Karya Anda </h4>
                         <div class="table-responsive">
                             <table class="table table-striped table-bordered mt-3 mb-3">
@@ -101,7 +101,13 @@
 
                                 <tr>
                                     {{-- <th scope="row">{{$i++}}</th> --}}
-                                    <td>{{$k->nama_karya}}</td>
+                                    <td>
+                                        @if(($k->status>0 && $k->status<3))
+                                            <a href="/galeri/detail/{{$k->id_karya}}" class="text-dark" target="_blank"><u>{{$k->nama_karya}}</u></a>
+                                        @else
+                                            {{$k->nama_karya}}
+                                        @endif
+                                    </td>
                                     <td>
                                         @if($k->status==0)
                                             <span class="badge badge-secondary">Menunggu Konfirmasi</span>
@@ -112,15 +118,62 @@
                                         @endif
                                     </td>
                                     <td>
-                                        <a href="/karya/edit/{{$k->id_karya}}" class="btn btn-primary mr-2 mb-2">Edit</a>
+                                        @if($k->status==1)
+                                            <button type="button" class="btn btn-primary mr-2 mb-2 text-white" data-toggle="modal" data-target="#exampleModal{{$i}}">
+                                                Edit
+                                            </button>
+                                        @endif
+                                        <button type="button" class="btn btn-warning mr-2 text-white" data-toggle="modal" data-target="#exampleModal2{{$i}}">
+                                            Hapus
+                                        </button>
+                                    </td>
+                                </tr>
+                                <!-- Modal Edit -->
+                            <div class="modal fade" id="exampleModal{{$i}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Konfirmasi</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        </div>
+                                        <div class="modal-body">
+                                        Apakah anda yakin untuk mengedit post "{{$k->nama_karya}}" ?
+                                        </div> 
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <a href="/karya/edit/{{$k->id_karya}}" class="btn btn-primary mr-2 mb-2 text-white">Edit</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
 
-                                        <form method="POST" action="/karya/hapus/{{$k->id_karya}}">
+                            <!-- Modal Hapus -->
+                            <div class="modal fade" id="exampleModal2{{$i++}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Konfirmasi</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Apakah anda yakin untuk menghapus postingan karya seni "{{$k->nama_karya}}" ?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <form method="POST" action="/karya/hapus/{{$k->id_karya}}">
                                                 @method('DELETE')
                                                 @csrf
                                                 <button type="submit" class="btn btn-warning">Hapus</button>
-                                        </form>
-                                    </td>
-                                </tr>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
         @endforeach
     @else
                                 <tr><th colspan="4" class="text-center">--- Tidak ada data ---</th></tr> 
@@ -135,7 +188,7 @@
 
 {{-- USER BIASA --}}
 @elseif (Auth::user()->isAdmin == 0)
-                        <p>Anda saat ini berstatus sebagai pengunjung, jika anda berminat untuk memajang karya anda silahkan daftarkan diri anda sebagai seniman. Dan jangan lupa untuk submit karya anda segara ya..</p>  
+                        <p class="text-justify">Anda saat ini berstatus sebagai pengunjung, jika anda berminat untuk memajang karya anda silahkan daftarkan diri anda sebagai seniman. Ayo jangan ragu untuk tunjuk diri dan jangan lupa untuk submit karya-karyamu ya..</p>  
                         <button type="button" class="btn btn-primary mr-2" data-toggle="modal" data-target="#exampleModal" style="font-size: 1.23rem;">
                             Daftar Sebagai Seniman
                         </button>

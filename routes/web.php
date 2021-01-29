@@ -15,14 +15,14 @@
 // Guest
 Route::get('/', 'FrontController@index')->name('index');
 Route::get('/tentang', 'FrontController@tentang_kami')->name('tentang_kami');
+Route::get('/galeri', 'FrontController@show_galeri')->name('galeri');
+Route::get('/galeri/detail/{id}', 'FrontController@show_galeri_detail')->name('galeri_detail');
 
 // pengunjung
 Auth::routes();
 
-Route::get('/home', 'HomeController@home')->name('home');
-Route::get('/galeri', 'HomeController@show_galeri')->name('galeri');
-Route::get('/galeri/detail/{id}', 'HomeController@show_galeri_detail')->name('galeri_detail');
 Route::post('/users/laporkan', 'HomeController@laporkan')->name('laporkan');
+Route::get('/home', 'HomeController@home')->name('home');
 Route::post('/users/daftar_seniman', 'HomeController@daftar_seniman')->name('daftar_seniman');
 
 

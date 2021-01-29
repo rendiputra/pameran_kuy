@@ -295,8 +295,17 @@ class HomeController extends Controller
         if(empty($data)){
             return abort(404);
         } else{
-            DB::table('karya')->where('id_karya','=', $id)->increment('visitors');
-            return view('user.galeri_detail',['data'=>$data]);
+            if(Auth::user()){
+                if($data->id_user == Auth::user()->id){
+                    return view('user.galeri_detail',['data'=>$data]);
+                }else{
+                    DB::table('karya')->where('id_karya','=', $id)->increment('visitors');
+                    return view('user.galeri_detail',['data'=>$data]);
+                }
+            } else{
+                DB::table('karya')->where('id_karya','=', $id)->increment('visitors');
+                return view('user.galeri_detail',['data'=>$data]);
+            }
         }
     }
 
@@ -408,8 +417,9 @@ class HomeController extends Controller
             ->join('karya','report_post.id_karya','karya.id_karya')
             // field status: (0=antrian; 1=di Approve; 2=Ditolak; 3=Dihapus;)
             ->where([
-                ['report_post.status_report', '<' , 3], // report sudah direspon
-            ])->paginate(6);
+                ['report_post.status_report', '>' , 0], // report sudah direspon
+            ])->orderBy('report_post.updated_at', 'desc')
+            ->paginate(6);
         $jml = count($data);
 
         return view('admin.list_history_laporan',[

@@ -10,8 +10,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="dicoding:email" content="rendiputrapradana@gmail.com">
 
-	<link rel="icon" href="{{ asset('images/brush.ico')}}" type="image/x-icon">
-
+    <link rel="icon" href="{{ asset('images/brush.ico')}}" type="image/x-icon">
     <!-- Google font (font-family: 'Lato', sans-serif;) -->
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700,900" rel="stylesheet">
     <!-- Google font (font-family: 'Raleway', sans-serif;) -->
@@ -22,10 +21,6 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css')}}"> 
     <link rel="stylesheet" href="{{ asset('css/plugins.css')}}">
     <link rel="stylesheet" href="{{ asset('style.css')}}">
-
-    <!-- Cusom css -->
-    <link rel="stylesheet" href="{{ asset('css/custom.css')}}">
-    
 
     <!-- Modernizer js -->
     <script src="{{ asset('js/vendor/modernizr-3.5.0.min.js')}}"></script>
@@ -93,15 +88,15 @@
                 <div class="container">
                     <div class="banner-text banner-text-white">
 					@php
-						$date = date("Ymd", strtotime("20-12-2020"));
+						$date = date("Ymd", strtotime("01-03-2021"));
 						$dateNow = date("Ymd", strtotime(now()));
 						//dd($dateNow);
 					@endphp
 					@if	($dateNow<$date)
-                        <div class="banner-countbox event-countdown" data-countdown="2020/12/20"></div>
+                        <div class="banner-countbox event-countdown" data-countdown="2021/03/01"></div>
 					@endif
                         <h1>Pameran karya untuk Indonesia</h1>
-                        <h4>20-31 Desember 2020 | {{$jml_karya}} Karya {{$jml_user}} Seniman</h4>
+                        <h4>01-28 Februari 2021 | {{$jml_karya}} Karya {{$jml_user}} Seniman</h4>
 @guest	
 						<a href="/register" class="cr-btn cr-btn-lg cr-btn-blue">
 							<span>Daftar Sekarang</span>
@@ -127,10 +122,6 @@
 								<center><hr style="width: 50px; border: 3px solid rgb(0, 0, 0); border-radius: 5px;" class="text-center"></center>
 							</div>
 						</div>
-					</div>
-					<div class="alert alert-warning alert-dismissible">
-						<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-						<strong>Perhatian!</strong> Mohon maaf, mungkin untuk loading websitenya akan sedikit memakan waktu lebih lama dikarenakan limit speed freehosting.
 					</div>
 					<div class="row justify-content-center portfolios portfolio-popup-gallery-active">
 
@@ -167,14 +158,9 @@
 								<br><br>
 								<h2 class="">Pameran Kui</h2>
 								<center><hr style="width: 50px; border: 3px solid rgb(0, 0, 0); border-radius: 5px;" ></center>
-								<p class="text-justify">Pameran KUI(Karya Untuk Indonesia) adalah aplikasi yang dibuat untuk mendukung para seniman untuk  terus aktif dan produktif meski saat ini dihadapkan dengan pandemi COVID-19 yang berimbas ke hampir seluruh sektor.  Cras lectus dui, porta rhoncus nulla et, maximus tempor justo. In eget neque dui. Vivamus dolor neque, accumsan ac volutpat non, venenatis eu velit. Nulla commodo hendrerit sem a lacinia. Fusce vulputate ante eu mattis hendrerit. Aenean vel luctus mi. Praesent ultrices euismod molestie. Nunc ut felis egestas, tempus erat ac, interdum elit. Fusce vel lectus eu dolor ornare tristique a quis quam. Suspendisse potenti.</p>
-								<p class="text-justify">Aplikasi ini juga diikut sertakan dalam Kemenparekraf/Baparekraf Digital Challenge yang diselenggarakan oleh Dicoding. Dalam kategori Bangga Buatan Indonesia: </p>
-								<ul>
-									<li class="text-left">Desain Komunikasi Visual (DKV)</li>
-									<li class="text-left">Fotografi,</li>
-									<li class="text-left">Kerajinan Tangan (Kriya),</li>
-									<li class="text-left">Seni Rupa dan</li>
-								</ul>
+								<p class="text-justify" style="font-size: 1.1rem"><span class="text-primary">Pameran KUI(Karya Untuk Indonesia)</span> adalah aplikasi yang dibuat untuk mendukung para seniman untuk terus aktif dan produktif meski saat ini dihadapkan dengan pandemi COVID-19 yang berimbas ke hampir seluruh sektor. Dengan ada nya aplikasi ini diharapkan para seniman dan terutama seniman pemula dapat dengan mudah untuk menampilkan karya-karya nya dan juga dapat mempermudah para penikmat karya seni untuk melihat karya para seniman. Dan harapannya kedepan akan dapat menghasilkan transaksi antara seniman dan kolektor seni yang berkontrikbusi kepada ekonomi nasional.</p>
+								<p class="text-justify" style="font-size: 1.1rem">Aplikasi ini juga diikut sertakan dalam Event Re-Cloud Challenges Indonesia dalam kategori <span class="text-primary"> Entertainment </span> yang diselenggarakan oleh <a href="https://alibabacloud.com/" class="text-primary text-bold" target="_BLANK">Alibaba Cloud</a> dan <a href="https://www.codepolitan.com/" target="_BLANK" class="text-primary text-bold">Codepolitan</a>. </p>
+
 								<div class="button-group">
 									<a href="/tentang" class="cr-btn cr-btn-blue">
 										<span>Lihat Selengkapnya</span>
@@ -198,7 +184,7 @@
 			<div class="footer-copyright-area " style="background-color: #18212e">
 				<div class="container">
 					<div class="footer-copyright text-center">
-						<p style="font-size: 1.23rem">Copyright ©2020 | Challenge Dicoding</p>
+						<p style="font-size: 1.23rem">Copyright ©2021 | Re-Cloud Challenge</p>
 					</div>
 				</div>
 			</div>

@@ -10,8 +10,8 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-10">
-            <div class="card">
-                <div class="card-header text-center text-white" style="background-color: #18212e"><h4 class="text-white"> Daftar Laporan Post</h4></div>
+            <div class="card" style="box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);">
+                <div class="card-header text-center text-white" style="background-color: #18212e"><h4 class=" text-white"> Daftar Laporan Post</h4></div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -32,7 +32,7 @@
                         </div>
                     @endif
                     {{-- <h4 class="text-center"> Daftar Antrian Karya Seni </h4> --}}
-                    <a href="/admin/list_laporan/history" class="btn btn-primary mr-3">Daftar History Laporan</a>
+                    <a href="/admin/list_laporan/history" class="btn btn-primary mr-3 text-white">Daftar History Laporan</a>
                     <div class="table-responsive">
                         <table class="table table-striped table-bordered mt-3 mb-3">
                             <thead>
@@ -56,8 +56,8 @@ $i = 1;
                                 <td>{{$k->name}}</td>
                                 <td>"{{$k->pesan}}"</td>
                                 <td>
-                                    <a href="/admin/list_antrian_karya/detail/{{$k->id_karya}}" class="btn btn-primary mr-2 mb-2 text-white">Detail</a>
-                                    <button type="button" class="btn btn-success mr-2 mb-2 text-white" data-toggle="modal" data-target="#exampleModal{{$i}}">
+                                    <a href="/admin/list_antrian_karya/detail/{{$k->id_karya}}" class="btn btn-primary mr-2 mb-2  text-white">Detail</a>
+                                    <button type="button" class="btn btn-success mr-2 mb-2  text-white" data-toggle="modal" data-target="#exampleModal{{$i}}">
                                         Terima Laporan
                                     </button>
                                     <button type="button" class="btn btn-warning mr-2" data-toggle="modal" data-target="#exampleModal2{{$i}}">
