@@ -19,10 +19,9 @@ $ cp .env.example .env
 $ composer install
 ```
 
-### 4. Generate a new application key and  a new JWT authentication secret key
+### 4. Generate a new application key
 ```bash 
 $ php artisan key:generate
-$ php artisan jwt:generate
 ```
 
 ### 5. Start the local development server
@@ -38,11 +37,6 @@ $ cd pameran_kuy
 $ composer install
 $ cp .env.example .env
 $ php artisan key:generate
-$ php artisan jwt:generate
 $ php artisan serve
 ```
-<<<<<<< HEAD
-**Dan jangan lupa untuk dump DB file sqlnya**
-=======
-**Dan jangan lupa untuk dump DB file sqlnya**
->>>>>>> 8728b33b7add8cef271d6cd6efb9ff69dfc03cba
+**Dan jangan lupa untuk import DB file sqlnya**
